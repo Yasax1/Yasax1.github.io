@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">thinkphp6.0 | Pp1ove</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのPp1ove";
+  mashiro_option.author_name = "Pp1ove";
+  mashiro_option.site_url = "https://pp1ove.github.io/";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+  <script type="text/javascript">
+  var bg = "/img/cover/2.jpg,/img/cover/3.jpg,/img/cover/4.jpg,/img/cover/5.jpg,/img/cover/6.jpg,/img/cover/7.jpg,/img/cover/8.jpg,/img/cover/9.jpg,/img/cover/10.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+
+  </style>
+
+</head>
+</html>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://pp1ove.github.io/">
+          <img src="/img/custom/head.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>南风过境，十里春风不如你！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/Pp1ove" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/195675276" target="_blank" class="social-github" title="bilibili">
+                    <img src="/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="/img/social/qq.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/qq.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">Pp1ove</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/复现/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          复现
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/学科/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          学科
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/题目/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          题目
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(\img\article\14.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\14.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      thinkphp6.0</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="\img\custom\head.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">Pp1ove</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-2-7<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="0x01thinkphp6-0的安装"><a href="#0x01thinkphp6-0的安装" class="headerlink" title="0x01thinkphp6.0的安装"></a>0x01thinkphp6.0的安装</h1><p>参考</p>
+<pre><code>https://www.kancloud.cn/manual/thinkphp6_0/1037479
+https://www.cnblogs.com/it-abu/p/13493424.html
+</code></pre><h1 id="0x02开发规范"><a href="#0x02开发规范" class="headerlink" title="0x02开发规范"></a>0x02开发规范</h1><h2 id="一．开发规范"><a href="#一．开发规范" class="headerlink" title="一．开发规范"></a><strong>一．开发规范</strong></h2><h4 id="一．开发规范-1"><a href="#一．开发规范-1" class="headerlink" title="一．开发规范"></a><strong>一．开发规范</strong></h4><ol>
+<li><h5 id="ThinkPHP6-0-遵循的是-PSR-2-的命名规范和-PSR-4-的自动加载；"><a href="#ThinkPHP6-0-遵循的是-PSR-2-的命名规范和-PSR-4-的自动加载；" class="headerlink" title="ThinkPHP6.0 遵循的是 PSR-2 的命名规范和 PSR-4 的自动加载；"></a>ThinkPHP6.0 遵循的是 PSR-2 的命名规范和 PSR-4 的自动加载；</h5></li>
+<li><h5 id="目录和文件的规范如下："><a href="#目录和文件的规范如下：" class="headerlink" title="目录和文件的规范如下："></a>目录和文件的规范如下：</h5></li>
+</ol>
+<p>a. 目录名（小写+下划线）； </p>
+<p>b. 类库和函数文件统一以.php 为后缀； </p>
+<p>c. 类的文件名均以命名空间定义，并且命名空间的路径和类库文件所在路径 </p>
+<p>一致； </p>
+<p>d. 类（包含接口和 Trait）文件采用驼峰式命名（首字母大写），其它采用 </p>
+<p>小写+下划线命名； </p>
+<p>e. 类名（包括接口和 Trait）和文件名保持一致，统一采用驼峰式命名 </p>
+<p>（首字母大写）； </p>
+<ol start="3">
+<li><h5 id="函数和类、属性命名规范如下："><a href="#函数和类、属性命名规范如下：" class="headerlink" title="函数和类、属性命名规范如下："></a>函数和类、属性命名规范如下：</h5></li>
+</ol>
+<p>a. 类的命名采用驼峰法（首字母大写），如：User、UserType； </p>
+<p>b. 函数的命名使用小写字母和下划线（小写字母开头）的方式， </p>
+<p>如：get_client_ip； </p>
+<p>c. 方法的命名使用驼峰法（首字母小写），如：getUserName； </p>
+<p>d. 属性的命名使用驼峰法（首字母小写），如：tableName； </p>
+<p>e. 特例：以双下划线__打头的函数或方法作为魔术方法，如： </p>
+<p><strong>call 和 </strong>autoload； </p>
+<ol start="4">
+<li><h5 id="常量与配置的规范如下："><a href="#常量与配置的规范如下：" class="headerlink" title="常量与配置的规范如下："></a>常量与配置的规范如下：</h5></li>
+</ol>
+<p>a. 常量以大写字母和下划线命名，如：APP_PATH； </p>
+<p>b. 配置参数以小写字母和下划线命名，如：url_convert； </p>
+<p>c. 环境变量定义使用大写字母和下划线命名，如：APP_DEBUG； </p>
+<ol start="5">
+<li>数据表和字段的规范如下： </li>
+</ol>
+<p>a. 数据表和字段采用小写加下划线方式命名； </p>
+<p>b. 并注意字段名不要以下划线开头，如： think_user 表和 user_name </p>
+<p>c. 字段不建议使用驼峰和中文作为数据表及字段命名； </p>
+<h2 id="二．目录结构"><a href="#二．目录结构" class="headerlink" title="二．目录结构"></a><strong>二．目录结构</strong></h2><ol>
+<li><p>ThinkPHP6.0 支持多应用模式部署，app 是应用目录； </p>
+</li>
+<li><p>默认情况下，是采用的单模式，如下图结构：</p>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207103015346.png" alt="image-20210207103015346"></p>
+</li>
+<li><p>多应用模式下，结构如下图： </p>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207103151992.png" alt="image-20210207103151992"></p>
+</li>
+<li><p>上图中，app_name 可以有多个，即多应用模式； </p>
+</li>
+<li><p>在目录结构上，只确保对外可访问的仅 public 目录； </p>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207103113247.png" alt="image-20210207103113247"></p>
+</li>
+<li><p>在 app 目录中，还提供了一些文件，这些文件将在后面逐步讲到； </p>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207103129000.png" alt="image-20210207103129000"></p>
+</li>
+</ol>
+<h1 id="0x03开启调试与配置文件"><a href="#0x03开启调试与配置文件" class="headerlink" title="0x03开启调试与配置文件"></a>0x03<strong>开启调试与配置文件</strong></h1><ol>
+<li>通过命令行安装的 TP6.0，会自动在根目录生成一个.example..env 文件； </li>
+<li>这个.env 文件是环境配置文件，我们只要删除前面的.example.即可生效； </li>
+<li>此时，刷新页面，右下角会出现 Trace 调试小图标，说明调试开启了； </li>
+<li>查看.env 文件，打开调试的环境变量为 APP_DEBUG = true，false 关闭； </li>
+</ol>
+<h1 id="0x04URL访问模式"><a href="#0x04URL访问模式" class="headerlink" title="0x04URL访问模式"></a><strong>0x04URL访问模式</strong></h1><ol>
+<li><p>ThinkPHP 框架非常多的操作都是通过 URL 来实现的； </p>
+</li>
+<li><p>多应用：<a href="http://serverName/index.php/应用/控制器/操作/参数/值…；" target="_blank" rel="noopener">http://serverName/index.php/应用/控制器/操作/参数/值…；</a> </p>
+</li>
+<li><p>单应用：<a href="http://serverName/index.php/控制器/操作/参数/值…；" target="_blank" rel="noopener">http://serverName/index.php/控制器/操作/参数/值…；</a></p>
+</li>
+<li><p>由于 TP6.0 默认是单应用模式，多应用需要作为扩展安装，避免混乱暂时搁置； </p>
+</li>
+<li><p><a href="http://serverName" target="_blank" rel="noopener">http://serverName</a> 是域名地址，比如 127.0.0.1:8000 或 localhost/tp6/ </p>
+</li>
+<li><p>index.php 这个文件，是根目录下 public/下的 index.php(入口文件)； </p>
+</li>
+<li><p>控制器：app 目录下有一个 controller 控制器目录的 Test.php(控制器)； </p>
+</li>
+<li><p>Test.php 控制器的类名也必须是 class Test，否则错误； </p>
+</li>
+<li><p>操作就是控制器类里面的方法，比如：index(默认免写)或 hello(必写)； </p>
+</li>
+<li><p>那么完整形式为： </p>
+</li>
+</ol>
+<p>a. <a href="http://localhost/tp6/public/index.php/test/hello/value/world" target="_blank" rel="noopener">http://localhost/tp6/public/index.php/test/hello/value/world</a> </p>
+<p>b. <a href="http://127.0.0.1:8000/index.php/test/hello/value/world" target="_blank" rel="noopener">http://127.0.0.1:8000/index.php/test/hello/value/world</a> </p>
+<pre><code class="php">class Test 
+
+{ 
+
+    public function index() 
+
+    { 
+
+        return &#39;test&#39;; 
+
+    }
+
+    public function hello($value = &#39;&#39;) 
+
+    { 
+
+        return &#39;hello &#39;.$value; 
+
+    } 
+
+} 
+</code></pre>
+<ol start="11">
+<li><p>public/index.php 中的 index.php 可以省略，只要设置 URL 重写即可； </p>
+</li>
+<li><p>httpd.conf 配置文件中加载了 mod_rewrite.so 模块； </p>
+</li>
+<li><p>AllowOverride None 将 None 改为 All； </p>
+</li>
+<li><p>此时，路径变更为： </p>
+</li>
+</ol>
+<p><a href="http://localhost/tp6/public/test/hello/value/world" target="_blank" rel="noopener">http://localhost/tp6/public/test/hello/value/world</a></p>
+<h2 id="二．-URL-兼容模式"><a href="#二．-URL-兼容模式" class="headerlink" title="二．**URL 兼容模式**"></a><strong>二．**</strong>URL<strong> </strong>兼容模式**</h2><ol>
+<li><p>上个要点已经了解了 URL 所有访问规则，通过创建 Test 控制器更加了解； </p>
+</li>
+<li><p>如果上面那种形式的 URL 不支持的话，可以使用兼容模式的方式来访问： </p>
+</li>
+</ol>
+<p><a href="http://localhost/tp6test3/public/?s=test/hello/value/world" target="_blank" rel="noopener">http://localhost/tp6test3/public/?s=test/hello/value/world</a></p>
+<h1 id="0x05控制器定义"><a href="#0x05控制器定义" class="headerlink" title="0x05控制器定义"></a><strong>0x05控制器定义</strong></h1><h2 id="一．控制器定义"><a href="#一．控制器定义" class="headerlink" title="一．控制器定义"></a><strong>一．控制器定义</strong></h2><ol>
+<li><p>控制器，即 controller，控制器文件存放在 controller 目录下； </p>
+</li>
+<li><p>如果想改变系统默认的控制器文件目录，可以在 config 下 route.php 配置： </p>
+</li>
+</ol>
+<p>‘controller_layer’ =&gt; ‘controller123’, </p>
+<ol start="3">
+<li>类名和文件名大小写保持一致，并采用驼峰式（首字母大写）； </li>
+</ol>
+<p>namespace app\controller; </p>
+<p>class Test {…} </p>
+<ol start="4">
+<li><p>从上面两段代码得知 Test.php 的实际位置为：app\controller\Test.php </p>
+</li>
+<li><p>在 Test 类创建两个方法 index(默认)和 hello，访问 URL 如下： </p>
+</li>
+</ol>
+<p><a href="http://localhost/tp6/public/test/" target="_blank" rel="noopener">http://localhost/tp6/public/test/</a> </p>
+<p><a href="http://localhost/tp6/public/test/hello" target="_blank" rel="noopener">http://localhost/tp6/public/test/hello</a> </p>
+<ol start="6">
+<li>那么如果创建的是双字母组合，比如 class HelloWorld，访问 URL 如下： </li>
+</ol>
+<p><a href="http://localhost/tp6test3/public/helloworld" target="_blank" rel="noopener">http://localhost/tp6test3/public/helloworld</a> </p>
+<p><a href="http://localhost/tp6test3/public/hello_world" target="_blank" rel="noopener">http://localhost/tp6test3/public/hello_world</a> </p>
+<ol start="7">
+<li>如果你想避免引入同类名时的冲突，可以 route.php 设置控制器后缀： </li>
+</ol>
+<p>‘controller_suffix’ =&gt; true, </p>
+<ol start="8">
+<li>此时，Test.php 就必须改成 TestController.php，并类名也需要增加后缀； </li>
+</ol>
+<p><strong>二．渲染输出</strong> </p>
+<ol>
+<li><p>ThinkPHP 直接采用方法内 return 返回的方式直接就输出了； </p>
+</li>
+<li><p>使用 json 输出，直接采用 json 函数； </p>
+</li>
+</ol>
+<p>$data = array(‘a’=&gt;<strong>1</strong>, ‘b’=&gt;<strong>2</strong>, ‘c’=&gt;<strong>3</strong>); </p>
+<p>return json($data); </p>
+<ol start="3">
+<li>不推荐使用 die、exit 等 PHP 方法中断代码执行，推荐助手函数 halt()； </li>
+</ol>
+<p>halt(‘中断测试’)</p>
+<h1 id="0x06基础-空-多级控制器"><a href="#0x06基础-空-多级控制器" class="headerlink" title="0x06基础.空.多级控制器"></a>0x06基础.空.多级控制器</h1><h2 id="一．基础控制器"><a href="#一．基础控制器" class="headerlink" title="一．基础控制器"></a><strong>一．基础控制器</strong></h2><ol>
+<li><p>一般来说，创建控制器后，推荐继承基础控制器来获得更多的方法； </p>
+</li>
+<li><p>基础控制器仅仅提供了控制器验证功能，并注入了think\App和think\Request； </p>
+</li>
+<li><p>这两个对象后面会有章节详细讲解，下面我们继承并简单使用一下； </p>
+</li>
+</ol>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207105523312.png" alt="image-20210207105523312"></p>
+<h2 id="二．空控制器"><a href="#二．空控制器" class="headerlink" title="二．空控制器"></a><strong>二．空控制器</strong></h2><ol>
+<li>在单应用模式下，我们可以给项目定义一个 Error 控制器类，来提醒错误；</li>
+</ol>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207105549679.png" alt="image-20210207105549679"></p>
+<h2 id="三．多级控制器"><a href="#三．多级控制器" class="headerlink" title="三．多级控制器"></a><strong>三．多级控制器</strong></h2><ol>
+<li><p>所谓多级控制器，就是在控制器 controller 目录下再建立目录并创建控制器； </p>
+</li>
+<li><p>我们在 controller 目录下建立 group 目录，并创建 Blog.php 控制器； </p>
+</li>
+<li><p>而此时，我们需要访问的地址为：<a href="http://localhost:8000/group.blog" target="_blank" rel="noopener">http://localhost:8000/group.blog</a></p>
+</li>
+</ol>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207105654462.png" alt="image-20210207105654462"></p>
+<p><img src="/2021/02/07/thinkphp6-0/image-20210207110153724.png" alt="image-20210207110153724"></p>
+<h1 id="0x07连接数据库与模型初探"><a href="#0x07连接数据库与模型初探" class="headerlink" title="0x07连接数据库与模型初探"></a>0x07连接数据库与模型初探</h1><h2 id="一．连接数据库"><a href="#一．连接数据库" class="headerlink" title="一．连接数据库"></a><strong>一．连接数据库</strong></h2><ol>
+<li><p>ThinkPHP 采用内置抽象层将不同的数据库操作进行封装处理； </p>
+</li>
+<li><p>数据抽象层基于 PDO 模式，无须针对不同的数据库编写相应的代码； </p>
+</li>
+<li><p>使用数据库的第一步，就是连接你的数据库； </p>
+</li>
+<li><p>在根目录的 config 下的 database.php 可以设置数据库连接信息； </p>
+</li>
+<li><p>大部分系统已经给了默认值，你只需要修改和填写需要的值即可； </p>
+</li>
+<li><p>本地测试，会优先采用.env 的配置信息，我们和 database 配置对应上即可； </p>
+</li>
+</ol>
+<blockquote>
+<p>‘type’ =&gt; Env::get(‘database.type’, ‘mysql’), </p>
+<p>‘hostname’ =&gt; Env::get(‘database.hostname’, ‘127.0.0.1’), </p>
+<p>‘database’ =&gt; Env::get(‘database.database’, ‘grade’), </p>
+<p>‘username’ =&gt; Env::get(‘database.username’, ‘root’), </p>
+<p>‘password’ =&gt; Env::get(‘database.password’, ‘123456’), </p>
+<p>‘hostport’ =&gt; Env::get(‘database.hostport’, ‘3306’), </p>
+<p>‘charset’ =&gt; Env::get(‘database.charset’, ‘utf8’), </p>
+<p>‘prefix’ =&gt;Env::get(‘database.prefix’, ‘tp_’), </p>
+</blockquote>
+<ol start="7">
+<li><p>可以通过删除改变.env 的配置，或删除.env 来验证 database 的执行优先级； </p>
+</li>
+<li><p>在 database.php 配置中，default 表示设置默认的数据库连接； </p>
+</li>
+<li><p>connections 配置数据库连接信息，可以是多个数据库，便于切换； </p>
+</li>
+<li><p>默认的数据库连接名称为：’mysql’，再复制一组数据库链接信息：’demo’切换； </p>
+</li>
+<li><p>创建一个用于测试数据连接的控制器：DataTest.php； </p>
+</li>
+</ol>
+<pre><code class="php">namespace app\controller; 
+
+use think\facade\Db; 
+
+class DataTest 
+
+{ 
+
+    public function index() 
+
+    { 
+
+        $user = Db::table(&#39;tp_user&#39;)-&gt;select(); 
+
+        //$user = Db::connect(&#39;mysql&#39;)-&gt;table(&#39;tp_user&#39;)-&gt;select(); 
+
+        return json($user); 
+
+    }
+
+    public function demo() 
+
+    { 
+
+        $demo = Db::connect(&#39;demo&#39;)-&gt;table(&#39;tp_user&#39;)-&gt;select(); 
+
+        return json($demo); 
+
+    } 
+
+} 
+</code></pre>
+<h2 id="二．模型初探"><a href="#二．模型初探" class="headerlink" title="二．模型初探"></a><strong>二．模型初探</strong></h2><ol>
+<li>在 app 目录下创建一个 model 目录，并创建 User.php 的模型类； </li>
+</ol>
+<pre><code class="php">namespace app\model; 
+
+use think\Model; 
+
+class User extends Model 
+
+{ 
+
+    protected $connection = &#39;demo&#39;; 
+
+} 
+</code></pre>
+<ol start="2">
+<li><p>User 继承模型基类，即可实现数据调用，后面章节会详解讲解； </p>
+</li>
+<li><p>而受保护的字段$connection，则是切换到 demo 数据库； </p>
+</li>
+<li><p>控制器端的调用方式如下，具体原理，后面模型章节会详解； </p>
+</li>
+</ol>
+<pre><code class="php">public function getUser() 
+
+{ 
+
+    $user = User::select(); 
+
+    return json($user); 
+
+}
+</code></pre>
+<h1 id="0x08数据库的数据查询"><a href="#0x08数据库的数据查询" class="headerlink" title="0x08数据库的数据查询"></a>0x08数据库的数据查询</h1><h2 id="一．单数据查询"><a href="#一．单数据查询" class="headerlink" title="一．单数据查询"></a><strong>一．单数据查询</strong></h2><ol>
+<li><p>Db::table()中 table 必须指定完整数据表（包括前缀）； </p>
+</li>
+<li><p>如果希望只查询一条数据，可以使用 find()方法，需指定 where 条件； </p>
+</li>
+</ol>
+<pre><code class="php">Db::table(&#39;tp_user&#39;)-&gt;where(&#39;id&#39;, 27)-&gt;find() 
+</code></pre>
+<ol start="3">
+<li>Db::getLastSql()方法，可以得到最近一条 SQL 查询的原生语句； </li>
+</ol>
+<pre><code class="php">SELECT * FROM `tp_user` LIMIT 1 
+</code></pre>
+<ol start="4">
+<li><p>没有查询到任何值，则返回 null； </p>
+</li>
+<li><p>使用 findOrFail()方法同样可以查询一条数据，在没有数据时抛出一个异常； </p>
+</li>
+</ol>
+<pre><code class="php">Db::table(&#39;tp_user&#39;)-&gt;where(&#39;id&#39;, 1)-&gt;findOrFail() 
+</code></pre>
+<ol start="6">
+<li>使用 findOrEmpty()方法也可以查询一条数据，但在没有数据时返回一个空数组； </li>
+</ol>
+<pre><code class="php">Db::table(&#39;tp_user&#39;)-&gt;where(&#39;id&#39;, 1)-&gt;findOrEmpty(); 
+</code></pre>
+<h2 id="二．数据集查询"><a href="#二．数据集查询" class="headerlink" title="二．数据集查询"></a><strong>二．数据集查询</strong></h2><ol>
+<li>想要获取多列数据，可以使用 select()方法； </li>
+</ol>
+<pre><code class="php">Db::table(&#39;tp_user&#39;)-&gt;select(); 
+
+SELECT * FROM `tp_user` 
+</code></pre>
+<ol start="2">
+<li>多列数据在查询不到任何数据时返回空数组，使用 selectOrFail()抛出异常； </li>
+</ol>
+<pre><code class="php">Db::table(&#39;tp_user&#39;)-&gt;where(&#39;id&#39;, 1)-&gt;selectOrFail(); 
+</code></pre>
+<ol start="3">
+<li>在 select()方法后再使用 toArray()方法，可以将数据集对象转化为数组； </li>
+</ol>
+<pre><code class="php">$user = Db::table(&#39;tp_user&#39;)-&gt;select()-&gt;toArray(); 
+
+dump($user); 
+</code></pre>
+<ol start="4">
+<li>当在数据库配置文件中设置了前缀，那么我们可以使用 name()方法忽略前缀； </li>
+</ol>
+<pre><code class="php">Db::name(&#39;user&#39;)-&gt;select(); 
+</code></pre>
+<h2 id="三．其它查询"><a href="#三．其它查询" class="headerlink" title="三．其它查询"></a><strong>三．其它查询</strong></h2><ol>
+<li>通过 value()方法，可以查询指定字段的值（单个），没有数据返回 null； </li>
+</ol>
+<pre><code class="php">Db::name(&#39;user&#39;)-&gt;where(&#39;id&#39;, **27**)-&gt;value(&#39;username&#39;);
+</code></pre>
+<ol start="2">
+<li>通过 colunm()方法，可以查询指定列的值（多个），没有数据返回空数组； </li>
+</ol>
+<pre><code class="php">Db::name(&#39;user&#39;)-&gt;column(&#39;username&#39;); 
+</code></pre>
+<ol start="3">
+<li>可以指定 id 作为列值的索引； </li>
+</ol>
+<pre><code class="php">Db::name(&#39;user&#39;)-&gt;column(&#39;username&#39;, &#39;id&#39;); 
+</code></pre>
+<ol start="4">
+<li><p>如果处理的数据量巨大，成百上千那种，一次性读取有可能会导致内存开销过大； </p>
+</li>
+<li><p>为了避免内存处理太多数据出错，可以使用 chunk()方法分批处理数据； </p>
+</li>
+<li><p>比如，每次只处理 100 条，处理完毕后，再读取 100 条继续处理； </p>
+</li>
+</ol>
+<pre><code class="php">Db::table(&#39;tp_user&#39;)-&gt;chunk(3, function($users) { 
+
+    foreach ($users as $user) { 
+
+    dump($user); 
+
+}
+
+echo 1; 
+
+}; 
+</code></pre>
+<ol start="7">
+<li>可以利用游标查询功能，可以大幅度减少海量数据的内存开销，它利用了 PHP 生 </li>
+</ol>
+<p>成器特性。每次查询只读一行，然后再读取时，自动定位到下一行继续读取； </p>
+<pre><code class="php">$cursor = Db::table(&#39;tp_user&#39;)-&gt;cursor(); 
+
+foreach($cursor as $user){ 
+
+    dump($user); 
+
+}
+</code></pre>
+<h1 id="0x09数据库的链式查询"><a href="#0x09数据库的链式查询" class="headerlink" title="0x09数据库的链式查询"></a>0x09数据库的链式查询</h1><p><strong>一．查询规则</strong> </p>
+<ol>
+<li><p>前面课程中我们通过指向符号“-&gt;”多次连续调用方法称为：链式查询； </p>
+</li>
+<li><p>当 Db::name(‘user’)时，返回查询对象(Query)，即可连缀数据库对应的方法； </p>
+</li>
+<li><p>每次执行一个数据库查询方法时，比如 where()，还将返回查询对象(Query)； </p>
+</li>
+<li><p>只要还是数据库对象，那么就可以一直使用指向符号进行链式查询； </p>
+</li>
+<li><p>再利用 find()、select()等方法返回数组(Array)或数据集对象(Colletion)； </p>
+</li>
+<li><p>而 find()和 select()是结果查询方法（放在最后），并不是链式查询方法； </p>
+</li>
+</ol>
+<pre><code>Db::name(&#39;user&#39;)-&gt;where(&#39;id&#39;, 27)-&gt;order(&#39;id&#39;, &#39;desc&#39;)-&gt;find() 
+</code></pre><ol start="7">
+<li><p>除了查询方法可以使用链式连贯操作，CURD 操作也可以使用（后续课程研究）； </p>
+</li>
+<li><p>那么，有多少种类似 where()的链式操作方法呢？打开手册瞄一下。。。 </p>
+</li>
+</ol>
+<p><strong>二．更多查询</strong> </p>
+<ol>
+<li><p>如果多次使用数据库查询，那么每次静态创建都会生成一个实例，造成浪费； </p>
+</li>
+<li><p>我们可以把对象实例保存下来，再进行反复调用即可； </p>
+</li>
+</ol>
+<pre><code class="php">$userQuery = Db::name(&#39;user&#39;); 
+$dataFind = $userQuery-&gt;where(&#39;id&#39;, 27)-&gt;find(); 
+$dataSelect = $userQuery-&gt;select(); 
+</code></pre>
+<ol start="3">
+<li>当同一个对象实例第二次查询后，会保留第一次查询的值； </li>
+</ol>
+<pre><code class="php">$data1 = $userQuery-&gt;order(&#39;id&#39;, &#39;desc&#39;)-&gt;select(); 
+$data2 = $userQuery-&gt;select(); 
+return Db::getLastSql(); 
+SELECT * FROM tp_user ORDER BY id DESC 
+</code></pre>
+<ol start="4">
+<li>使用 removeOption()方法，可以清理掉上一次查询保留的值； </li>
+</ol>
+<pre><code class="php">$userQuery-&gt;removeOption(&#39;where&#39;)-&gt;select();
+</code></pre>
+<h1 id="0x0a数据库的数据新增"><a href="#0x0a数据库的数据新增" class="headerlink" title="0x0a数据库的数据新增"></a>0x0a数据库的数据新增</h1><h2 id="一．单数据新增"><a href="#一．单数据新增" class="headerlink" title="一．单数据新增"></a><strong>一．单数据新增</strong></h2><ol>
+<li>使用 insert()方法可以向数据表添加一条数据，更多的字段采用默认； </li>
+</ol>
+<blockquote>
+<p>$data = [ </p>
+<p>‘username’ =&gt; ‘辉夜’, </p>
+<p>‘password’ =&gt; ‘123’, </p>
+<p>‘gender’ =&gt; ‘女’, </p>
+<p>‘email’ =&gt; <a href="mailto:&#39;huiye@163.com" target="_blank" rel="noopener">&#39;huiye@163.com</a>‘, </p>
+<p>‘price’ =&gt; 90, </p>
+<p>‘details’ =&gt; ‘123’ </p>
+<p>];</p>
+</blockquote>
+<p><code>Db::name(&#39;user&#39;)-&gt;insert($data);</code> </p>
+<ol start="2">
+<li>如果新增成功，insert()方法会返回一个 1 值； </li>
+</ol>
+<p><code>return Db::name(&#39;user&#39;)-&gt;insert($data);</code> </p>
+<ol start="3">
+<li><p>如果你添加一个不存在的字段数据，会抛出一个异常 Exception； </p>
+</li>
+<li><p>如果想强行新增抛弃不存在的字段数据，则使用 strick(false)方法，忽略异常； </p>
+</li>
+</ol>
+<p><code>Db::name(&#39;user&#39;)-&gt;strict(false)-&gt;insert($data);</code> </p>
+<ol start="5">
+<li><p>如果我们采用的数据库是 mysql，可以支持 replace 写入； </p>
+</li>
+<li><p>insert 和 replace 写入的区别，前者表示表中存在主键相同则报错，后者则修改； </p>
+</li>
+</ol>
+<p><code>Db::name(&#39;user&#39;)-&gt;replace()-&gt;insert($data);</code> </p>
+<p><code>return Db::getLastSql();</code> </p>
+<ol start="7">
+<li>使用 insertGetId()方法，可以在新增成功后返回当前数据 ID； </li>
+</ol>
+<p><code>return Db::name(&#39;user&#39;)-&gt;insertGetId($data);</code> </p>
+<h2 id="二．批量数据新增"><a href="#二．批量数据新增" class="headerlink" title="二．批量数据新增"></a>二．<strong>批量数据新增</strong></h2><ol>
+<li>使用 insertAll()方法，可以批量新增数据，但要保持数组结构一致； </li>
+</ol>
+<blockquote>
+<p>$data = [ </p>
+<p>[ </p>
+<p>‘username’ =&gt; ‘辉夜’, </p>
+<p>‘password’ =&gt; ‘123</p>
+<p>‘gender’ =&gt; ‘女’, </p>
+<p>‘email’ =&gt; <a href="mailto:&#39;huiye@163.com" target="_blank" rel="noopener">&#39;huiye@163.com</a>‘,</p>
+<p> ‘price’ =&gt; 90, </p>
+<p>‘details’ =&gt; ‘123’ ],</p>
+<p>[ </p>
+<p>‘username’ =&gt; ‘辉夜’, </p>
+<p>‘password’ =&gt; ‘123’, </p>
+<p>‘gender’ =&gt; ‘女’, </p>
+<p>‘email’ =&gt; <a href="mailto:&#39;huiye@163.com" target="_blank" rel="noopener">&#39;huiye@163.com</a>‘, </p>
+<p>‘price’ =&gt; 90, </p>
+<p>‘details’ =&gt; ‘123’ </p>
+<p>] </p>
+<p>];</p>
+</blockquote>
+<p><code>Db::name(&#39;user&#39;)-&gt;insertAll($data);</code> </p>
+<ol start="2">
+<li>批量新增也支持 replace()方法，添加后改变成 replace into； </li>
+</ol>
+<p><code>Db::name(&#39;user&#39;)-&gt;replace()-&gt;insertAll($data);</code> </p>
+<h2 id="三．save-新增"><a href="#三．save-新增" class="headerlink" title="三．save()新增"></a>三．save()新增</h2><ol>
+<li><p>save()方法是一个通用方法，可以自行判断是新增还是修改(更新)数据； </p>
+</li>
+<li><p>save()方法判断是否为新增或修改的依据为，是否存在主键，不存在即新增； </p>
+</li>
+</ol>
+<pre><code class="php">Db::name(&#39;user&#39;)-&gt;save($data);
+</code></pre>
+<h1 id="0x0b数据库的修改删除"><a href="#0x0b数据库的修改删除" class="headerlink" title="0x0b数据库的修改删除"></a>0x0b数据库的修改删除</h1><h2 id="一．数据修改"><a href="#一．数据修改" class="headerlink" title="一．数据修改"></a><strong>一．数据修改</strong></h2><ol>
+<li>使用 update()方法来修改数据，修改成功返回影响行数，没有修改返回 0； </li>
+</ol>
+<blockquote>
+<p>$data = [ </p>
+<p>‘username’ =&gt; ‘李白’ </p>
+<p>];</p>
+<p>return Db::<strong>name</strong>(‘user’)-&gt;where(‘id’, <strong>38</strong>)-&gt;update($data); </p>
+</blockquote>
+<ol start="2">
+<li>如果修改数据包含了主键信息，比如 id，那么可以省略掉 where 条件； </li>
+</ol>
+<blockquote>
+<p>$data = [ </p>
+<p>‘id’ =&gt; 231, </p>
+<p>‘username’ =&gt; ‘李白’ </p>
+<p>];</p>
+<p>return Db::name(‘user’)-&gt;update($data); </p>
+</blockquote>
+<ol start="3">
+<li>如果想让一些字段修改时执行 SQL 函数操作，可以使用 exp()方法实现； </li>
+</ol>
+<p>Db::name(‘user’)-&gt;where(‘id’, <strong>232</strong>) -&gt;exp(‘email’, ‘UPPER(email)’) -&gt;update(); </p>
+<ol start="4">
+<li>如果要自增/自减某个字段，可以使用 inc/dec 方法，并支持自定义步长； </li>
+</ol>
+<p>Db::name(‘user’)-&gt;where(‘id’, <strong>232</strong>) -&gt;inc(‘price’) -&gt;dec(‘status’, <strong>2</strong>) -&gt;update(); </p>
+<ol start="5">
+<li>一个更加简单粗暴灵活的方式，使用::raw()方法实现 3，4 点的内容； </li>
+</ol>
+<blockquote>
+<p>Db::name(‘user’)-&gt;where(‘id’, <strong>232</strong>) </p>
+<p>-&gt;update([ </p>
+<p>‘email’ =&gt; Db::raw(‘UPPER(email)’), </p>
+<p>‘price’ =&gt; Db::raw(‘price + 1’), </p>
+<p>‘status’ =&gt; Db::raw(‘status - 2’)</p>
+<p>]); </p>
+</blockquote>
+<ol start="6">
+<li>使用 save()方法进行修改数据，这里必须指定主键才能实现修改功能； </li>
+</ol>
+<p>Db::name(‘user’)-&gt;where(‘id’, <strong>232</strong>) -&gt;save([‘username’=&gt;’李黑’]);</p>
+<h1 id="0x0c数据库的查询表达式"><a href="#0x0c数据库的查询表达式" class="headerlink" title="0x0c数据库的查询表达式"></a>0x0c数据库的查询表达式</h1><h2 id="一．比较查询"><a href="#一．比较查询" class="headerlink" title="一．比较查询"></a><strong>一．比较查询</strong></h2><ol>
+<li>查询表达式支持大部分常用的 SQL 语句，语法格式如下： </li>
+</ol>
+<p>where(‘字段名’,’查询表达式’,’查询条件’); </p>
+<ol start="2">
+<li>在查询数据进行筛选时，我们采用 where()方法，比如 id=80； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’, <strong>80</strong>)-&gt;find(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’=’,<strong>80</strong>)-&gt;find(); </p>
+<ol start="3">
+<li>使用&lt;&gt;、&gt;、&lt;、&gt;=、&lt;=可以筛选出各种符合比较值的数据列表； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’&lt;&gt;’,<strong>80</strong>)-&gt;select(); </p>
+<h2 id="二．区间查询"><a href="#二．区间查询" class="headerlink" title="二．区间查询"></a><strong>二．区间查询</strong></h2><ol>
+<li>使用 like 表达式进行模糊查询； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘email’,’like’,’xiao%’)-&gt;select(); </p>
+<ol start="2">
+<li>like 表达式还可以支持数组传递进行模糊查询； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘email’,’like’,[‘xiao%’,’wu%’], ‘or’)-&gt;select(); </p>
+<p>SELECT * FROM <code>tp_user</code> WHERE (<code>email</code> LIKE ‘xiao%’ OR <code>email</code> LIKE ‘wu%’) </p>
+<ol start="3">
+<li>like 表达式具有两个快捷方式 whereLike()和 whereNoLike()； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereLike(‘email’,’xiao%’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereNotLike(‘email’,’xiao%’)-&gt;select(); </p>
+<ol start="4">
+<li>between 表达式具有两个快捷方式 whereBetween()和 whereNotBetween()； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’between’,’19,25’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’between’,[<strong>19</strong>, <strong>25</strong>])-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereBetween(‘id’,’19,25’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereNotBetween(‘id’,’19,25’)-&gt;select(); </p>
+<ol start="5">
+<li>in 表达式具有两个快捷方式 whereIn()和 whereNotIn()； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’in’, ‘19,21,29’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’in’, [<strong>19</strong>, <strong>21</strong>, <strong>29</strong>])-&gt;select();</p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereIn(‘id’,’19,21,29’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereNotIn(‘id’,’19,21,29’)-&gt;select(); </p>
+<ol start="6">
+<li>null 表达式具有两个快捷方式 whereNull()和 whereNotNull()； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘uid’,’null’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘uid’,’not null’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereNull(‘uid’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereNotNull(‘uid’)-&gt;select(); </p>
+<h2 id="三．EXP-查询"><a href="#三．EXP-查询" class="headerlink" title="三．EXP 查询"></a><strong>三．EXP 查询</strong></h2><ol>
+<li>使用 exp 可以自定义字段后的 SQL 语句； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘id’,’exp’,’IN (19,21,25)’)-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereExp(‘id’,’IN (19,21,25)’)-&gt;select()</p>
+<h1 id="0x0d数据库的时间查询"><a href="#0x0d数据库的时间查询" class="headerlink" title="0x0d数据库的时间查询"></a>0x0d数据库的时间查询</h1><h2 id="一．传统方式"><a href="#一．传统方式" class="headerlink" title="一．传统方式"></a><strong>一．传统方式</strong></h2><ol>
+<li>可以使用&gt;、&lt;、&gt;=、&lt;=来筛选匹配时间的数据； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘create_time’, ‘&gt;’, ‘2018-1-1’)-&gt;select(); </p>
+<ol>
+<li>可以使用 between 关键字来设置时间的区间； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘create_time’, ‘between’, [‘2018-1-1’, ‘2019-12-31’])-&gt;select(); </p>
+<p>Db::<strong>name</strong>(‘user’)-&gt;where(‘create_time’, ‘not between’, [‘2018-1-1’, ‘2019-12-31’])-&gt;select(); </p>
+<h2 id="二．快捷方式"><a href="#二．快捷方式" class="headerlink" title="二．快捷方式"></a><strong>二．快捷方式</strong></h2><ol>
+<li>时间查询的快捷方法为 whereTime()，直接使用&gt;、&lt;、&gt;=、&lt;=； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereTime(‘create_time’, ‘&gt;’, ‘2018-1-1’)-&gt;select(); </p>
+<ol start="2">
+<li>快捷方式也可以使用 between 和 not between； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereBetween(‘create_time’, [‘2018-1-1’, ‘2019-12-31’])-&gt;select(); </p>
+<ol start="3">
+<li>还有一种快捷方式为：whereBetweenTime()和 whereNotBetweenTime()； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereBetweenTime(‘create_time’, ‘2018-1-1’, ‘2019-12-31’)-&gt;select(); </p>
+<ol start="4">
+<li>默认的大于&gt;，可以省略； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereTime(‘create_time’, ‘2018-1-1’)-&gt;select(); </p>
+<h2 id="三．固定查询"><a href="#三．固定查询" class="headerlink" title="三．固定查询"></a><strong>三．固定查询</strong></h2><ol>
+<li>使用 whereYear 查询今年的数据、去年的数据和某一年的数据 </li>
+</ol>
+<p>Db::name(‘user’)-&gt;whereYear(‘create_time’)-&gt;select(); </p>
+<p>Db::name(‘user’)-&gt;whereYear(‘create_time’, ‘last year’)-&gt;select(); </p>
+<p>Db::name(‘user’)-&gt;whereYear(‘create_time’, ‘2016’)-&gt;select();</p>
+<ol start="2">
+<li>使用 whereMonth 查询当月的数据、上月的数据和某一个月的数据； </li>
+</ol>
+<p>Db::name(‘user’)-&gt;whereMonth(‘create_time’)-&gt;select(); </p>
+<p>Db::name(‘user’)-&gt;whereMonth(‘create_time’, ‘last month’)-&gt;select(); </p>
+<p>Db::name(‘user’)-&gt;whereMonth(‘create_time’, ‘2016-6’)-&gt;select(); </p>
+<ol start="3">
+<li>使用 whereDay 查询今天的数据、昨天的数据和某一个天的数据； </li>
+</ol>
+<p>Db::name(‘user’)-&gt;whereDay(‘create_time’)-&gt;select(); </p>
+<p>Db::name(‘user’)-&gt;whereDay(‘create_time’, ‘last day’)-&gt;select(); </p>
+<p>Db::name(‘user’)-&gt;whereDay(‘create_time’, ‘2016-6-27’)-&gt;select(); </p>
+<h2 id="四．其它查询"><a href="#四．其它查询" class="headerlink" title="四．其它查询"></a><strong>四．其它查询</strong></h2><ol>
+<li>查询指定时间的数据，比如两小时内的； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereTime(‘create_time’, ‘-2 hours’)-&gt;select(); </p>
+<ol start="2">
+<li>查询两个时间字段时间有效期的数据，比如会员开始到结束的期间； </li>
+</ol>
+<p>Db::<strong>name</strong>(‘user’)-&gt;whereBetweenTimeField(‘start_time’, ‘end_time’)-&gt;select();</p>
+<h1 id="0x10模型的定义方式"><a href="#0x10模型的定义方式" class="headerlink" title="0x10模型的定义方式"></a>0x10<strong>模型的定义方式</strong></h1><h2 id="一．定义模型"><a href="#一．定义模型" class="headerlink" title="一．定义模型"></a><strong>一．定义模型</strong></h2><ol>
+<li>定义一个和数据库表向匹配的模型； </li>
+</ol>
+<p>class User extends Model </p>
+<ol start="2">
+<li><p>模型会自动对应数据表，并且有一套自己的命名规则； </p>
+</li>
+<li><p>模型类需要去除表前缀(tp_)，采用驼峰式命名，并且首字母大写； </p>
+</li>
+</ol>
+<p>tp_user(表名) =&gt; User </p>
+<p>tp_user_type(表名) =&gt; UserType </p>
+<ol start="4">
+<li><p>创建空模型后，我们可以在控制器调用，创建控制器 DataModel.php； </p>
+</li>
+<li><p>可以直接使用模型的名称 User::*调用查询方法，比如 select()等； </p>
+</li>
+<li><p>如果没有代码提示，请和上一节一样，把 5.1 的注释复制过来； </p>
+</li>
+</ol>
+<pre><code class="php">class DataModel 
+
+{ 
+
+public function index() 
+
+{ 
+
+return json(User::**select**()); 
+
+} 
+
+} 
+</code></pre>
+<ol start="7">
+<li><p>如果担心设置的模型类名和 PHP 关键字冲突，可以开启应用类后缀； </p>
+</li>
+<li><p>比如设置：Class UserModel 这种，需要更改文件名为 UserModel.php； </p>
+</li>
+<li><p>然后设置一下$name 属性为指定 user(表名)即可实现； </p>
+</li>
+</ol>
+<pre><code class="php">class UserModel extends Model 
+
+{ 
+
+protected $name = &#39;user&#39;; 
+
+} 
+</code></pre>
+<h2 id="二．设置模型"><a href="#二．设置模型" class="headerlink" title="二．设置模型"></a><strong>二．设置模型</strong></h2><ol>
+<li>默认主键为 id，你可以设置其它主键，比如 uid； </li>
+</ol>
+<p>protected $pk = ‘uid’; </p>
+<ol start="2">
+<li>从控制器端调用模型操作，如果和控制器类名重复，可以设置别名； </li>
+</ol>
+<p>use app\model\User as UserModel;</p>
+<ol start="3">
+<li>在模型定义中，可以设置其它的数据表； </li>
+</ol>
+<p>protected $table = ‘tp_one’; </p>
+<ol start="4">
+<li>模型和控制器一样，也有初始化，在这里必须设置 static 静态方法； </li>
+</ol>
+<pre><code class="php">//模型初始化 
+
+protected static function init() 
+
+{ 
+
+//第一次实例化的时候执行 init 
+
+echo &#39;初始化 User 模型&#39;; 
+
+}
+
+
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="/img/custom/donate/zhifubaoSQ.jpg"></li>
+                <li class="wechat-code"><img src="/img/custom/donate/wechatSQ.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/02/07/ctfshow-萌新赛/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\15.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\15.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                ctfshow-萌新赛</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/02/02/phpcms9-2文件上传漏洞/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\13.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\13.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                phpcms9.2文件上传漏洞</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="\img\custom\head.jpg" itemprop="image" alt="Pp1ove" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Pp1ove</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>Pp1ove</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    
+<!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pp1ove<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2021 HAPPY NEW YEAR !!!</p>
+    </div>
+       <center>
+                网站已运行:<span id="run_time" style="color:black"></span>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("January 01,2021");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    //str = yearsold + "年";
+                    str += daysold + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="skin-menu no-select" id="mainskin" style="position: fixed">
+ <div class="theme-controls row-container">
+  <ul class="menu-list">
+   <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+   <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+   <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+   <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+   <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+   <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+   <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+   <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+  </ul>
+ </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+ 
+  <div class="changeSkin-gear no-select">
+  <div class="keys" id="setbtn"> 
+   <span id="open-skinMenu"> 切换主题 | SCHEME TOOL  
+     <i class="iconfont icon-gear inline-block rotating"></i> 
+   </span>
+  </div>
+</div>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="/img/custom/head.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのPp1ove</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/Pp1ove" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/复现/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  复现
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/学科/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  学科
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/题目/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  题目
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="5251613646"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="s</body>
+</html>

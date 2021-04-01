@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">sqli-lab | Pp1ove</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのPp1ove";
+  mashiro_option.author_name = "Pp1ove";
+  mashiro_option.site_url = "https://pp1ove.github.io/";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+  <script type="text/javascript">
+  var bg = "/img/cover/2.jpg,/img/cover/3.jpg,/img/cover/4.jpg,/img/cover/5.jpg,/img/cover/6.jpg,/img/cover/7.jpg,/img/cover/8.jpg,/img/cover/9.jpg,/img/cover/10.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+
+  </style>
+
+</head>
+</html>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://pp1ove.github.io/">
+          <img src="/img/custom/head.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>南风过境，十里春风不如你！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/Pp1ove" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/195675276" target="_blank" class="social-github" title="bilibili">
+                    <img src="/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="/img/social/qq.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/qq.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">Pp1ove</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/复现/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          复现
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/学科/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          学科
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/题目/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          题目
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(\img\article\10.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\10.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      sqli-lab</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="\img\custom\head.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">Pp1ove</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-1-17<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="less-1-4-union"><a href="#less-1-4-union" class="headerlink" title="less 1-4   union"></a>less 1-4   union</h2><p>未进行任何处理,直接union注入</p>
+<p><img src="/2021/01/17/sqlilabs/image-20210117202347303-1611282459432.png" alt="image-20210117202347303"></p>
+<h1 id="less-5-6-盲注-报错"><a href="#less-5-6-盲注-报错" class="headerlink" title="less 5-6  盲注,报错"></a>less 5-6  盲注,报错</h1><pre><code class="PHP">$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+$result=mysql_query($sql);
+$row = mysql_fetch_array($result);
+
+    if($row)
+    {
+      echo &#39;&lt;font size=&quot;5&quot; color=&quot;#FFFF00&quot;&gt;&#39;;    
+      echo &#39;You are in...........&#39;;                         //没有回显,盲注
+      echo &quot;&lt;br&gt;&quot;;
+        echo &quot;&lt;/font&gt;&quot;;
+      }
+    else 
+    {
+
+    echo &#39;&lt;font size=&quot;3&quot; color=&quot;#FFFF00&quot;&gt;&#39;;
+    print_r(mysql_error());                                  //输出报错信息,可能会产生报错注入
+    echo &quot;&lt;/br&gt;&lt;/font&gt;&quot;;    
+    echo &#39;&lt;font color= &quot;#0000ff&quot; font size= 3&gt;&#39;;    
+
+    }
+}
+</code></pre>
+<h3 id="regexp-正则注入"><a href="#regexp-正则注入" class="headerlink" title="regexp 正则注入"></a>regexp 正则注入</h3><p>除了常见的时间盲注,布尔盲注,正则注入介绍：<a href="http://www.cnblogs.com/lcamry/articles/5717442.html" target="_blank" rel="noopener">http://www.cnblogs.com/lcamry/articles/5717442.html</a> </p>
+<p>like匹配注入也和正则注入类似</p>
+<h1 id="less-7-文件"><a href="#less-7-文件" class="headerlink" title="less 7  文件"></a>less 7  文件</h1><p>需要说一下这个方法需要mysql数据库开启secure-file-priv写文件权限，否则不能写入文件。</p>
+<p>如果你使用的时phpstudy，或者xammp请修改其自己的环境里的mysql配置文件。</p>
+<p>进入mysql安装目录，找到my.ini 修改里面的secure-file-priv参数</p>
+<p>如果发现没有secure_file_priv这个选项，直接再最后添加一个空的即可。</p>
+<p><img src="/2021/01/17/sqlilabs/2018082015123945-1611282459433" alt="img"></p>
+<p>如果引号中是一个文件路径的话，导入/出的文件路径会再这个路径下。</p>
+<h3 id="相关函数："><a href="#相关函数：" class="headerlink" title="相关函数："></a>相关函数：</h3><p>load_file()导出文件</p>
+<p>load date infile</p>
+<p>select……into outfile ‘file_name’</p>
+<h1 id="less-8-10-盲注"><a href="#less-8-10-盲注" class="headerlink" title="less 8-10 盲注"></a>less 8-10 盲注</h1><p>跟5,6的源码一样,只是注释掉了<code>print_r(mysql_error());</code> 导致不能使用报错注入</p>
+<h1 id="less-11-14-union-post"><a href="#less-11-14-union-post" class="headerlink" title="less 11-14 union post"></a>less 11-14 union post</h1><p>平平无奇的post</p>
+<p><code>后端代码：@$sql=&quot;SELECT username, password FROM users WHERE username=&#39;$uname&#39; and password=&#39;$passwd&#39; LIMIT 0,1&quot;;</code></p>
+<h1 id="less-15-16-时间盲注"><a href="#less-15-16-时间盲注" class="headerlink" title="less  15-16 时间盲注"></a>less  15-16 时间盲注</h1><h1 id="less-17"><a href="#less-17" class="headerlink" title="less 17"></a>less 17</h1><p>源码很有意思,使用了一个<code>function check_input($value)</code>函数来检测输入是否合法</p>
+<pre><code class="php">function check_input($value)
+   {
+   if(!empty($value))
+      {
+      // truncation (see comments)
+      $value = substr($value,0,15);                         //限制字符串长度
+      }
+
+      // Stripslashes if magic quotes enabled
+      if (get_magic_quotes_gpc())                        
+         {
+         $value = stripslashes($value);
+         }
+
+      // Quote if not a number
+      if (!ctype_digit($value))                     //检查字符串里的字符是不是都是数字,是返回true，不是返回false。
+         {
+         $value = &quot;&#39;&quot; . mysql_real_escape_string($value) . &quot;&#39;&quot;;//函数转义 SQL 语句中使用的字符串中的特殊字符。
+         }
+
+   else
+      {
+      $value = intval($value);
+      }
+   return $value;
+   }
+</code></pre>
+<p><img src="/2021/01/17/sqlilabs/image-20210117205030272-1611282459433.png" alt="image-20210117205030272"></p>
+<p>感觉挺复杂的,不知道以后能不能绕过这个函数</p>
+<p>然后看后面,因为passwd没有进行过滤,并且后面输出了报错信息,可以使用报错注入,</p>
+<p><img src="/2021/01/17/sqlilabs/image-20210118150637394-1611282459433.png" alt="image-20210118150637394"></p>
+<p>若没有报错信息,还可以使用update注入,update参数可控,  update users set password=‘1’ ,id=’xxx’ where username=’admin’;</p>
+<p>可以更改多个字段数据</p>
+<h1 id="less-18-19"><a href="#less-18-19" class="headerlink" title="less 18,19"></a>less 18,19</h1><pre><code class="PHP">    $sql=&quot;SELECT  users.username, users.password FROM users WHERE users.username=$uname and users.password=$passwd ORDER BY users.id DESC LIMIT 0,1&quot;;
+    $result1 = mysql_query($sql);
+    $row1 = mysql_fetch_array($result1);
+        if($row1)
+            {
+            echo &#39;&lt;font color= &quot;#FFFF00&quot; font size = 3 &gt;&#39;;
+            $insert=&quot;INSERT INTO `security`.`uagents` (`uagent`, `ip_address`, `username`) VALUES (&#39;$uagent&#39;, &#39;$IP&#39;, $uname)&quot;;
+            echo &quot;$uagent&quot;;
+            echo &quot;&lt;/br&gt;&quot;;
+            echo &quot;$insert&quot;;
+            mysql_query($insert);
+            //echo &#39;Your IP ADDRESS is: &#39; .$IP;
+            echo &quot;&lt;/font&gt;&quot;;
+            //echo &quot;&lt;br&gt;&quot;;
+            echo &#39;&lt;font color= &quot;#0000ff&quot; font size = 3 &gt;&#39;;            
+            echo &#39;Your User Agent is: &#39; .$uagent;
+            echo &quot;&lt;/font&gt;&quot;;
+            echo &quot;&lt;br&gt;&quot;;
+            print_r(mysql_error());                             //输出报错信息
+            echo &quot;&lt;br&gt;&lt;br&gt;&quot;;
+            echo &#39;&lt;img src=&quot;../images/flag.jpg&quot;  /&gt;&#39;;
+            echo &quot;&lt;br&gt;&quot;;
+
+            }
+        else
+            {
+            echo &#39;&lt;font color= &quot;#0000ff&quot; font size=&quot;3&quot;&gt;&#39;;
+            //echo &quot;Try again looser&quot;;
+            print_r(mysql_error());        
+            echo &quot;&lt;/br&gt;&quot;;            
+            echo &quot;&lt;/br&gt;&quot;;
+            echo &#39;&lt;img src=&quot;../images/slap.jpg&quot;   /&gt;&#39;;    
+            echo &quot;&lt;/font&gt;&quot;;  
+            }
+
+</code></pre>
+<p>因为输出了报错信息,所以可以报错注入</p>
+<p>此外,INSERT参数可控还有以下注入方式</p>
+<h3 id="inert注入"><a href="#inert注入" class="headerlink" title="inert注入"></a>inert注入</h3><h4 id="1-注入点位于tbl-name"><a href="#1-注入点位于tbl-name" class="headerlink" title="1.注入点位于tbl_name"></a>1.注入点位于tbl_name</h4><pre><code>原句：insert into {tbl_name}  values(2,2,2,2);
+
+注入：insert into {wp_user values(2,&#39;newadmin&#39;,&#39;newpasswd&#39;)#}  values(2,2,2,2);
+</code></pre><h4 id="2-注入点位于values"><a href="#2-注入点位于values" class="headerlink" title="2.注入点位于values"></a>2.注入点位于values</h4><pre><code>INSERT INTO wp_user VALUES(1,1,{xxxxx});
+
+INSERT INTO wp_user VALUES(1,1,1),(2,1,&quot;aaaaa&quot;);                                                   //第二个字段若为管理员标识符,便可以添加管理员
+
+INSERT INTO wp_user VALUES(1,1,1),(2,2,(select pwd from wp_user limit 1));    //最后一个字段可以显示
+</code></pre><h1 id="less-20-22"><a href="#less-20-22" class="headerlink" title="less 20-22"></a>less 20-22</h1><p>关于cookie的,会把cookie存入数据库,然后再次访问时取出</p>
+<h1 id="less-23"><a href="#less-23" class="headerlink" title="less 23"></a>less 23</h1><p>加了替换,将#和–注释符给替换掉了</p>
+<pre><code class="PHP">$reg = &quot;/#/&quot;;
+$reg1 = &quot;/--/&quot;;
+$replace = &quot;&quot;;
+$id = preg_replace($reg, $replace, $id);
+$id = preg_replace($reg1, $replace, $id);
+</code></pre>
+<p>这里直接给出payload:<code>0&#39; union select 1,2,3 and &#39;1&#39;=&#39;1</code>   可以自己手动闭合后面的单引号</p>
+<h1 id="less-24"><a href="#less-24" class="headerlink" title="less 24"></a>less 24</h1><h3 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入:"></a>二次注入:</h3><p>开发者信任数据库中取出的数据是无害的，当我们引用数据库里的数据时,造成了二次注入</p>
+<p>这里我们创建了用户admin’#，然后在修改密码后,却把admin的密码给修改了</p>
+<p>源码:</p>
+<pre><code class="php">$sql = &quot;UPDATE users SET PASSWORD=&#39;$pass&#39; where username=&#39;$username&#39; and password=&#39;$curr_pass&#39; &quot;;
+</code></pre>
+<p><img src="/2021/01/17/sqlilabs/image-20210118154733732-1611282459433.png" alt="image-20210118154733732"></p>
+<p><img src="/2021/01/17/sqlilabs/image-20210118154713247-1611282459433.png" alt="image-20210118154713247"></p>
+<h1 id="less-25"><a href="#less-25" class="headerlink" title="less 25"></a>less 25</h1><pre><code class="php">function blacklist($id)
+{
+    $id= preg_replace(&#39;/or/i&#39;,&quot;&quot;, $id);            //strip out OR (non case sensitive)
+    $id= preg_replace(&#39;/AND/i&#39;,&quot;&quot;, $id);        //Strip out AND (non case sensitive)
+
+    return $id;
+}
+</code></pre>
+<p>将or和and替换为了空,可以采用双写绕过,或者可以采用&amp;&amp;和||</p>
+<p>1%27%20aandnd%201–%20-</p>
+<h1 id="less-26"><a href="#less-26" class="headerlink" title="less 26"></a>less 26</h1><pre><code class="php">function blacklist($id)
+{
+    $id= preg_replace(&#39;/or/i&#39;,&quot;&quot;, $id);            //strip out OR (non case sensitive)
+    $id= preg_replace(&#39;/and/i&#39;,&quot;&quot;, $id);        //Strip out AND (non case sensitive)
+    $id= preg_replace(&#39;/[\/\*]/&#39;,&quot;&quot;, $id);        //strip out /*
+    $id= preg_replace(&#39;/[--]/&#39;,&quot;&quot;, $id);        //Strip out --
+    $id= preg_replace(&#39;/[#]/&#39;,&quot;&quot;, $id);            //Strip out #
+    $id= preg_replace(&#39;/[\s]/&#39;,&quot;&quot;, $id);        //Strip out spaces
+    $id= preg_replace(&#39;/[\/\\\\]/&#39;,&quot;&quot;, $id);        //Strip out slashes   斜杠
+    return $id;
+}
+</code></pre>
+<p>好家伙,又过滤了斜杠和空格,但是空格有很多种方式绕过</p>
+<p>如URL编码:  %0a,%0b,%0c,%0d,%09,%a0</p>
+<p>/**/组合    括号</p>
+<p>这里需要linux环境才能使用这些特殊字符串,因为我是在windows下搭的,就懒得本地测试了</p>
+<h1 id="less-27"><a href="#less-27" class="headerlink" title="less 27"></a>less 27</h1><pre><code class="PHP">function blacklist($id)
+{
+$id= preg_replace(&#39;/[\/\*]/&#39;,&quot;&quot;, $id);        //strip out /*
+$id= preg_replace(&#39;/[--]/&#39;,&quot;&quot;, $id);        //Strip out --.
+$id= preg_replace(&#39;/[#]/&#39;,&quot;&quot;, $id);            //Strip out #.
+$id= preg_replace(&#39;/[ +]/&#39;,&quot;&quot;, $id);        //Strip out spaces.
+$id= preg_replace(&#39;/select/m&#39;,&quot;&quot;, $id);        //Strip out spaces.
+$id= preg_replace(&#39;/[ +]/&#39;,&quot;&quot;, $id);        //Strip out spaces.
+$id= preg_replace(&#39;/union/s&#39;,&quot;&quot;, $id);        //Strip out union
+$id= preg_replace(&#39;/select/s&#39;,&quot;&quot;, $id);        //Strip out select
+$id= preg_replace(&#39;/UNION/s&#39;,&quot;&quot;, $id);        //Strip out UNION
+$id= preg_replace(&#39;/SELECT/s&#39;,&quot;&quot;, $id);        //Strip out SELECT
+$id= preg_replace(&#39;/Union/s&#39;,&quot;&quot;, $id);        //Strip out Union
+$id= preg_replace(&#39;/Select/s&#39;,&quot;&quot;, $id);        //Strip out select
+return $id;
+}
+</code></pre>
+<p>又过滤了union和select,依旧双写,而且似乎可以大小写绕过</p>
+<h1 id="less-28"><a href="#less-28" class="headerlink" title="less 28"></a>less 28</h1><pre><code class="php">function blacklist($id)
+{
+$id= preg_replace(&#39;/[\/\*]/&#39;,&quot;&quot;, $id);                //strip out /*
+$id= preg_replace(&#39;/[--]/&#39;,&quot;&quot;, $id);                //Strip out --.
+$id= preg_replace(&#39;/[#]/&#39;,&quot;&quot;, $id);                    //Strip out #.
+$id= preg_replace(&#39;/[ +]/&#39;,&quot;&quot;, $id);                //Strip out spaces.
+//$id= preg_replace(&#39;/select/m&#39;,&quot;&quot;, $id);                    //Strip out spaces.
+$id= preg_replace(&#39;/[ +]/&#39;,&quot;&quot;, $id);                //Strip out spaces.
+$id= preg_replace(&#39;/union\s+select/i&#39;,&quot;&quot;, $id);        //Strip out UNION &amp; SELECT.
+return $id;
+}
+</code></pre>
+<p>过滤了union+select组合,因为替换为空,仍然双写绕过 union union select select</p>
+<p>又或者 使用盲注</p>
+<h1 id="less-29-31-一个简单的waf"><a href="#less-29-31-一个简单的waf" class="headerlink" title="less 29-31 一个简单的waf"></a>less 29-31 一个简单的waf</h1><p>又没做,因为好像要搭环境(人太懒了)</p>
+<h1 id="less-32-34"><a href="#less-32-34" class="headerlink" title="less 32 -34"></a>less 32 -34</h1><h3 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h3><p>因此我们在此想办法将 ‘ 前面添加的 \ 除掉，一般有两种思路： </p>
+<p>1、%df 吃掉 \ </p>
+<p>具体的原因是 urlencode(‘) = %5c%27，我们在%5c%27 前面添加%df，形 </p>
+<p>成%df%5c%27，而上面提到的 mysql 在 GBK 编码方式的时候会将两个字节当做一个汉字，此 </p>
+<p>事%df%5c 就是一个汉字，%27 则作为一个单独的符号在外面，同时也就达到了我们的目的。 </p>
+<p>2、将 \’ 中的 \ 过滤掉，例如可以构造 %**%5c%5c%27 的情况，后面的%5c 会被前面的%5c 给注释掉。这也是 bypass 的一种方法。</p>
+<ol start="3">
+<li>使用UTF-16编码</li>
+</ol>
+<pre><code class="Php">function check_addslashes($string)
+{
+    $string = preg_replace(&#39;/&#39;. preg_quote(&#39;\\&#39;) .&#39;/&#39;, &quot;\\\\\\&quot;, $string);          //escape any backslash
+    $string = preg_replace(&#39;/\&#39;/i&#39;, &#39;\\\&#39;&#39;, $string);                               //escape single quote with a backslash
+    $string = preg_replace(&#39;/\&quot;/&#39;, &quot;\\\&quot;&quot;, $string);                                //escape double quote with a backslash
+
+
+    return $string;
+}
+这题增加了个check函数,第一个正则匹配转义了\，然后会在&#39;和&quot;前面加上斜杠,可以使用宽字节注入    //宽字节注入的条件是支持GDK编码
+</code></pre>
+<p>payload：<code>?id=-1%df%27 UNion seleCt 1,2,DATABASE()--+</code></p>
+<p>第33关将get改为了post请求</p>
+<p>这里要注意如果使用宽字节注入的话需要用burp抓包,因为我们的%df中的%会被url编码,而且我直接使用repeater模块还无法看到返回结果,就很疑惑</p>
+<p>payload：<code>uname=admin%df&#39; union select 1,2-- -&amp;passwd=admin&amp;submit=Submit</code></p>
+<p>当然还有一种方法:将utf-8转换为utf-16或 utf-32，例如将 ‘ 转为utf-16为�’ 。</p>
+<h3 id="宽字节注入的防护"><a href="#宽字节注入的防护" class="headerlink" title="宽字节注入的防护"></a>宽字节注入的防护</h3><p>首先我们需要过滤掉\，不然就可以可以使用第二种思路绕过</p>
+<p>过滤斜杠后,我们依旧可以使用%df的方式进行绕过</p>
+<pre><code class="php">Addslashes()函数和我们在 32 关实现的功能基本一致的，所以我们依旧可以利用%df 进行绕 过。Notice：使用 addslashes(),我们需要将 mysql_query 设置为 binary 的方式，才能防御此漏洞。 Mysql_query(“SET character_set_connection=gbk,character_set_result=gbk,character_set_client=binary”,$conn);
+在PHP语言情况下
+可以防止一些SQL诸如 比如我在你的登陆窗口写
+“用户名”=%dc%27%20or%201=1%20limit%201%20/*&amp;amp; 
+“密码”=88888*/%23 
+就有可能直接登陆你后台
+但是你如果设置了SET character_set_client = binary 
+MYSQL 就会以二进制发送 不存在宽字节注入
+</code></pre>
+<pre><code class="php">在使用 mysql_real_escape_string()时，如何能够安全的防护这种问题，需要将 mysql 设置为 
+
+gbk 即可。 
+
+设置代码： 
+
+Mysql_set_charset(‘gbk’,’$conn’)
+要避开mysql_real_escape_string可能的风险，有以下策略
+1）数据库表使用的编码与数据库变量character_set_client指定的编码相同，这样不需要set names xxx来改变编码。
+2）数据库表使用latin1或utf8等字符集，这样set names xxx也不会带来额外的风险。
+3）当需要set names gbk时，使用mysql_set_charset来替代。
+</code></pre>
+<p>再次分析代码,PHP客户端用的是UTF-8编码,而mysql用的是gbk编码,</p>
+<p><img src="/2021/01/17/sqlilabs/image-20210120203407838.png" alt="image-20210120203407838"></p>
+<p><img src="/2021/01/17/sqlilabs/image-20210120203621718.png" alt="image-20210120203621718"></p>
+<h1 id="less-35"><a href="#less-35" class="headerlink" title="less 35"></a>less 35</h1><p>用了<strong><em>addslashes</em></strong> 函数在指定的预定义字符前添加反斜杠。这些字符是单引号、双引号、反斜线与NULL。</p>
+<pre><code class="PHP">$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;
+</code></pre>
+<p>这题它id没有被单引号包裹,所以说addslashes函数没有作用,直接绕就行</p>
+<h1 id="less-36-37"><a href="#less-36-37" class="headerlink" title="less 36-37"></a>less 36-37</h1><p>还是斜杠转义,可能是想给我们介绍一些不同的转义函数吧,其实绕过方法都是一样的</p>
+<pre><code>mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。
+
+下列字符受影响：
+
+\x00
+
+\n
+
+\r
+
+\
+
+&#39;
+
+&quot;
+
+\x1a
+</code></pre><p>37 post,老方法</p>
+<h1 id="less-38-41"><a href="#less-38-41" class="headerlink" title="less 38-41"></a>less 38-41</h1><h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h2><pre><code class="php">&lt;?php
+
+
+
+
+// take the variables 
+if(isset($_GET[&#39;id&#39;]))
+{
+$id=$_GET[&#39;id&#39;];
+//logging the connection parameters to a file for analysis.
+$fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
+fwrite($fp,&#39;ID:&#39;.$id.&quot;\n&quot;);
+fclose($fp);
+
+// connectivity
+//mysql connections for stacked query examples.
+$con1 = mysqli_connect($host,$dbuser,$dbpass,$dbname);
+// Check connection
+if (mysqli_connect_errno($con1))
+{
+    echo &quot;Failed to connect to MySQL: &quot; . mysqli_connect_error();
+}
+else
+{
+    @mysqli_select_db($con1, $dbname) or die ( &quot;Unable to connect to the database: $dbname&quot;);
+}
+
+
+
+$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+/* execute multi query */
+if (mysqli_multi_query($con1, $sql))
+{
+
+
+    /* store first result set */
+    if ($result = mysqli_store_result($con1))　//如果当前执行的查询存在多个结果，返回“真”，而且应用程序必须调用mysql_next_result()来获取结果。
+    {
+        if($row = mysqli_fetch_row($result))                        // 函数从结果集中取得一行，并作为枚举数组返回。
+        {
+            var_dump($row);
+            echo &#39;&lt;font size = &quot;5&quot; color= &quot;#00FF00&quot;&gt;&#39;;    
+         //  printf(&quot;Your Username is : %s&quot;, $row[1]);
+            echo &quot;&lt;br&gt;&quot;;
+          //  printf(&quot;Your Password is : %s&quot;, $row[2]);
+            echo &quot;&lt;br&gt;&quot;;
+            echo &quot;&lt;/font&gt;&quot;;
+        }
+           mysqli_free_result($result);   //函数释放结果内存
+    }
+        /* print divider */
+    if (mysqli_more_results($con1))          //函数检查一个多查询是否有更多的结果。
+    {
+            //printf(&quot;-----------------\n&quot;);
+    }
+     //while (mysqli_next_result($con1));  //而且应用程序必须调用mysql_next_result()来获取结果。
+}
+else 
+    {
+    echo &#39;&lt;font size=&quot;5&quot; color= &quot;#FFFF00&quot;&gt;&#39;;
+    print_r(mysqli_error($con1));
+    echo &quot;&lt;/font&gt;&quot;;  
+    }
+/* close connection */
+mysqli_close($con1);
+}
+</code></pre>
+<p><strong>mysqli_multi_query()</strong> 支持同时查询多条数据</p>
+<p>这题无法输出第二个语句里面的内容,希望后面能遇到能输出第二个语句内容的关卡,让我对比一下两者的代码;但是第二条语句是可以执行的;可以使用insert语句将将想要的信息输入插入到users表中</p>
+<p>payload:</p>
+<p><code>?id=1%df&#39;;insert into users values(99,database(),version());</code></p>
+<p><code>?id=99</code></p>
+<p>less 39,整形</p>
+<p>41和39的区别 39会输出报错信息,其实可以采用报错注入</p>
+<h1 id="less-42"><a href="#less-42" class="headerlink" title="less 42"></a>less 42</h1><p>进来之后是一个登录框</p>
+<p><img src="/2021/01/17/sqlilabs/image-20210120204701419.png" alt="image-20210120204701419"></p>
+<p>跟二次注入那个一模一样,但是我们不能自己new user</p>
+<p>源码:</p>
+<p><img src="/2021/01/17/sqlilabs/image-20210120204317820.png" alt="image-20210120204317820"></p>
+<p>对username进行了mysqli_real_escape_string()函数进行检查,而且PHP客户端和数据库都是UTF-8编码,所以不存在宽字节绕过,但是它又没有对password进行处理,再password上面就存在注入</p>
+<p>我原本都以为这是使用堆叠注入越权new一个admin’#用户来进行二次注入的,但是却用不了,原因是因为:</p>
+<p>之前提到的username进行了mysqli_real_escape_string()函数进行过检查,虽然我们能new一个新用户,但是我们其实在登陆时本身单引号就会进行转义呀！！</p>
+<p>less 43 换了种闭合方式,然后44，45取消了报错,所以不能使用报错注入了,只能盲注</p>
+<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><h3 id="闭合方式判断"><a href="#闭合方式判断" class="headerlink" title="闭合方式判断"></a>闭合方式判断</h3><p>判断闭合方式，目前掌握的闭合方式为单引号’’，单引号括号(’’)，双引号””，双引号括号(“”)</p>
+<p>当单引号或者双引号出现回显或者语法错误时，如何判断是否带括号呢？</p>
+<p>遇到SQL注入第一步判断闭合：<br>首先尝试：</p>
+<pre><code>?id=1’
+?id=1”
+12
+</code></pre><p>1如果都报错，则为整形闭合。</p>
+<p>2如果单引号报错，双引号不报错。<br>然后尝试</p>
+<pre><code>?id=1&#39; --+
+?id=1&#39; #
+12
+</code></pre><p>无报错则单引号闭合。<br>报错则单引号加括号。</p>
+<p>3如果单引号不报错，双引号报错。<br>然后尝试</p>
+<pre><code>?id=1&quot; --+
+?id=1&quot; #
+12
+</code></pre><p>无报错则双引号闭合。<br>报错则双引号加括号。</p>
+<hr>
+<p>1</p>
+<p>输入（其中id=1,1是正确的数据库存在的值），正常回显</p>
+<pre><code>?id=1 and true --+
+或者
+?id=true and true --+
+123
+</code></pre><p>输入，错误回显</p>
+<pre><code>?id=1 and false --+
+或者
+?id=true and false --+
+123
+</code></pre><p>那么就是整形闭合</p>
+<p>2</p>
+<p>输入（其中id=1,1是正确的数据库存在的值），正常回显</p>
+<pre><code>?id=1’ and true --+
+或者
+?id=true‘ and true --+
+123
+</code></pre><p>输入，错误回显</p>
+<pre><code>?id=1’ and false --+
+或者
+?id=true‘ and false --+
+123
+</code></pre><p>那么就是单引号闭合，其他符号同理</p>
+<h3 id="单引号转义绕过"><a href="#单引号转义绕过" class="headerlink" title="单引号转义绕过"></a>单引号转义绕过</h3><p>当时用单引号’，代码转义为\’，就使用如下方式替换掉单引号</p>
+<pre><code>%df%27
+�&#39;
+%EF%BF%BD
+123
+</code></pre><p>万能密码</p>
+<pre><code>�&#39; and1=1 #
+1
+</code></pre><h3 id="database"><a href="#database" class="headerlink" title="database()"></a>database()</h3><p>返回当前数据库名</p>
+<h3 id="version"><a href="#version" class="headerlink" title="version()"></a>version()</h3><p>返回数据库的版本号</p>
+<h3 id="CONCAT-s1-s2…sn"><a href="#CONCAT-s1-s2…sn" class="headerlink" title="CONCAT(s1,s2…sn)"></a>CONCAT(s1,s2…sn)</h3><p>字符串 s1,s2 等多个字符串合并为一个字符串</p>
+<h3 id="CONCAT-WS-x-s1-s2…sn"><a href="#CONCAT-WS-x-s1-s2…sn" class="headerlink" title="CONCAT_WS(x, s1,s2…sn)"></a>CONCAT_WS(x, s1,s2…sn)</h3><p>同 CONCAT(s1,s2,…) 函数，但是每个字符串之间要加上 x，x 可以是分隔符</p>
+<h3 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h3><pre><code>mysql&gt; SELECT * FROM table LIMIT 5,10; // 检索记录行 6-15
+
+//为了检索从某一个偏移量到记录集的结束所有的记录行，可以指定第二个参数为 -1： 
+mysql&gt; SELECT * FROM table LIMIT 95,-1; // 检索记录行 96-last.
+
+//如果只给定一个参数，它表示返回最大的记录行数目： 
+mysql&gt; SELECT * FROM table LIMIT 5; //检索前 5 个记录行
+
+//换句话说，LIMIT n 等价于 LIMIT 0,n。
+123456789
+</code></pre><h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h3><h3 id="left"><a href="#left" class="headerlink" title="left"></a>left</h3><p>LEFT(s,n) 返回字符串 s 的前 n 个字符</p>
+<p>返回字符串 runoob 中的前两个字符：</p>
+<p>SELECT LEFT(‘runoob’,2) – ru</p>
+<h3 id="mid"><a href="#mid" class="headerlink" title="mid"></a>mid</h3><p>mid()函数为截取字符串一部分。mid(column_name,start,length)</p>
+<p>column_name 必需，要提取字符的字段</p>
+<p>start 必需，规定开始位置（起始为1）</p>
+<p>length 可选，要返回的字符数，如果省略则返回剩余文本</p>
+<p>eg：str=“123456” mid(str,2,1) 结果为2</p>
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h3><p>substr（）</p>
+<p>Substr()和substring()函数实现的功能是一样的，均为截取字符串。</p>
+<p>string substring(string, start, length)</p>
+<p>string substr(string, start, length)</p>
+<p>参数描述同mid()函数，第一个参数为要处理的字符串，start为开始位置，length为截取的长度</p>
+<h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h3><p>返回字符串 s 的第一个字符的 ASCII 码。<br>返回 CustomerName 字段第一个字母的 ASCII 码：</p>
+<p>SELECT ASCII(CustomerName) AS NumCodeOfFirstChar<br>FROM Customers;</p>
+<h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><p>返回查询的记录总数，expression 参数是一个字段或者 * 号</p>
+<p>返回 Products 表中 products 字段总共有多少条记录：</p>
+<p>SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;</p>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p>IF(expr,v1,v2) 如果表达式 expr 成立，返回结果 v1；否则，返回结果 v2<br>SELECT IF(1 &gt; 0,‘正确’,‘错误’)<br>-&gt;正确</p>
+<h3 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml"></a>updatexml</h3><p>updatexml()函数，是更新xml文档的函数。</p>
+<p>语法updatexml(目标xml文档，xml路径，更新的内容)</p>
+<p>select username from security.user where id=1 and (updatexml(‘anything’,’/xx/xx’,’anything’))</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="/img/custom/donate/zhifubaoSQ.jpg"></li>
+                <li class="wechat-code"><img src="/img/custom/donate/wechatSQ.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/01/24/ssrf/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\12.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\12.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                ssrf</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/01/17/反序列化字符串逃逸/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\4.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\4.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                反序列化字符串逃逸</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="\img\custom\head.jpg" itemprop="image" alt="Pp1ove" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Pp1ove</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>Pp1ove</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    
+<!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pp1ove<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2021 HAPPY NEW YEAR !!!</p>
+    </div>
+       <center>
+                网站已运行:<span id="run_time" style="color:black"></span>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("January 01,2021");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    //str = yearsold + "年";
+                    str += daysold + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="skin-menu no-select" id="mainskin" style="position: fixed">
+ <div class="theme-controls row-container">
+  <ul class="menu-list">
+   <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+   <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+   <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+   <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+   <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+   <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+   <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+   <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+  </ul>
+ </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+ 
+  <div class="changeSkin-gear no-select">
+  <div class="keys" id="setbtn"> 
+   <span id="open-skinMenu"> 切换主题 | SCHEME TOOL  
+     <i class="iconfont icon-gear inline-block rotating"></i> 
+   </span>
+  </div>
+</div>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="/img/custom/head.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのPp1ove</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/Pp1ove" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/复现/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  复现
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/学科/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  学科
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/题目/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  题目
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="5251613646"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="s</body>
+</html>

