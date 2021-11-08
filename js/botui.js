@@ -26,7 +26,7 @@ function bot_ui_ini() {
     }).then(function () {
         botui.message.add({
             delay: 1100,
-            content: "这里是 Pp1ove"
+            content: "这里是 Yasax1"
         }).then(function () {
             botui.message.add({
                 delay: 1100,
